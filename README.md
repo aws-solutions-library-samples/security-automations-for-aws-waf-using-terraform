@@ -1,6 +1,6 @@
 # Guidance Title (required)
 
-The Guidance title should be consistent with the title established first in Alchemy.
+The Guidance title should be consistent and short with the title established first in Alchemy.
 
 **Example:** *Guidance for Product Substitutions on AWS*
 
