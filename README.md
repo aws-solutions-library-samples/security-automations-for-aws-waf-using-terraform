@@ -1,215 +1,309 @@
-# Guidance Title (required)
+# 🛡️ AWS WAF Security Automations with Terraform
 
-The Guidance title should be consistent and short with the title established first in Alchemy.
+[![License: MIT-0](https://img.shields.io/badge/License-MIT--0-yellow.svg)](https://github.com/aws/mit-0)
+[![Terraform](https://img.shields.io/badge/Terraform-%3E%3D1.0.7-623CE4.svg)](https://terraform.io/)
+[![AWS Provider](https://img.shields.io/badge/AWS%20Provider-4.x-FF9900.svg)](https://registry.terraform.io/providers/hashicorp/aws/latest)
 
-**Example:** *Guidance for Product Substitutions on AWS*
+> **⚠️ Important Notice**: This is sample code for demonstration purposes. Do not use in production environments without proper testing, security review, and customization for your specific requirements.
 
-This title correlates exactly to the Guidance it’s linked to, including its corresponding sample code repository. 
+## 🚀 What This Solution Does
 
+This Terraform-based solution automatically deploys a comprehensive set of **AWS WAF (Web Application Firewall)** rules that protect your web applications from common attacks including:
 
-## Table of Contents (required)
+- 🔒 **SQL Injection** attacks
+- 🕷️ **Cross-Site Scripting (XSS)** attempts  
+- 🤖 **Bad bot** traffic and scrapers
+- 🌊 **HTTP flood** attacks (DDoS protection)
+- 🎯 **Scanner and probe** activities
+- 📋 **Reputation-based** IP blocking
 
-List the top-level sections of the README template, along with a hyperlink to the specific section.
+### Key Benefits
 
-### Required
+✅ **One-Click Deployment** - Deploy enterprise-grade WAF protection in minutes  
+✅ **Cost-Effective** - Automated rules reduce manual security management overhead  
+✅ **Scalable** - Works with both CloudFront and Application Load Balancers  
+✅ **Intelligent** - Uses machine learning and threat intelligence for dynamic protection  
+✅ **Observable** - Built-in CloudWatch dashboards and logging  
 
-1. [Overview](#overview-required)
-    - [Cost](#cost)
-2. [Prerequisites](#prerequisites-required)
-    - [Operating System](#operating-system-required)
-3. [Deployment Steps](#deployment-steps-required)
-4. [Deployment Validation](#deployment-validation-required)
-5. [Running the Guidance](#running-the-guidance-required)
-6. [Next Steps](#next-steps-required)
-7. [Cleanup](#cleanup-required)
+## 🏗️ Architecture Overview
 
-***Optional***
+![Target architecture diagram](https://user-images.githubusercontent.com/111126012/184378602-b8feebb5-e5db-41d9-a296-0580d21f73fc.png)
 
-8. [FAQ, known issues, additional considerations, and limitations](#faq-known-issues-additional-considerations-and-limitations-optional)
-9. [Revisions](#revisions-optional)
-10. [Notices](#notices-optional)
-11. [Authors](#authors-optional)
+The solution creates a multi-layered security architecture that includes:
+- **AWS WAF** with intelligent rule sets
+- **Lambda functions** for log analysis and IP management
+- **Amazon Athena** for advanced log querying
+- **S3 buckets** for secure log storage
+- **CloudWatch** dashboards for monitoring
+- **SNS notifications** for security alerts
 
-## Overview (required)
+## 🎯 Who Should Use This
 
-1. Provide a brief overview explaining the what, why, or how of your Guidance. You can answer any one of the following to help you write this:
+- **DevOps Engineers** setting up web application security
+- **Security Teams** implementing automated threat protection  
+- **Cloud Architects** designing secure web infrastructures
+- **Developers** protecting applications from common web attacks
 
-    - **Why did you build this Guidance?**
-    - **What problem does this Guidance solve?**
+## ⚡ Quick Start
 
-2. Include the architecture diagram image, as well as the steps explaining the high-level overview and flow of the architecture. 
-    - To add a screenshot, create an ‘assets/images’ folder in your repository and upload your screenshot to it. Then, using the relative file path, add it to your README. 
+### Prerequisites
 
-### Cost ( required )
+Before you begin, ensure you have:
 
-This section is for a high-level cost estimate. Think of a likely straightforward scenario with reasonable assumptions based on the problem the Guidance is trying to solve. Provide an in-depth cost breakdown table in this section below ( you should use AWS Pricing Calculator to generate cost breakdown ).
+- ✅ **AWS Account** with appropriate permissions
+- ✅ **AWS CLI** installed and configured ([Setup Guide](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html))
+- ✅ **Terraform** >= 1.0.7 installed ([Installation Guide](https://learn.hashicorp.com/tutorials/terraform/install-cli))
 
-Start this section with the following boilerplate text:
+### 🚀 Deploy in 3 Steps
 
-_You are responsible for the cost of the AWS services used while running this Guidance. As of <month> <year>, the cost for running this Guidance with the default settings in the <Default AWS Region (Most likely will be US East (N. Virginia)) > is approximately $<n.nn> per month for processing ( <nnnnn> records )._
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd guidance-for-security-automations-for-aws-waf
+   ```
 
-Replace this amount with the approximate cost for running your Guidance in the default Region. This estimate should be per month and for processing/serving resonable number of requests/entities.
+2. **Navigate to the basic example**
+   ```bash
+   cd examples/basic
+   ```
 
-Suggest you keep this boilerplate text:
-_We recommend creating a [Budget](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html) through [AWS Cost Explorer](https://aws.amazon.com/aws-cost-management/aws-cost-explorer/) to help manage costs. Prices are subject to change. For full details, refer to the pricing webpage for each AWS service used in this Guidance._
+3. **Deploy with Terraform**
+   ```bash
+   terraform init
+   terraform plan
+   terraform apply
+   ```
 
-### Sample Cost Table ( required )
+That's it! Your WAF protection is now active. 🎉
 
-**Note : Once you have created a sample cost table using AWS Pricing Calculator, copy the cost breakdown to below table and upload a PDF of the cost estimation on BuilderSpace. Do not add the link to the pricing calculator in the ReadMe.**
+### 🎛️ Configuration Options
 
-The following table provides a sample cost breakdown for deploying this Guidance with the default parameters in the US East (N. Virginia) Region for one month.
+The solution supports two deployment targets:
 
-| AWS service  | Dimensions | Cost [USD] |
-| ----------- | ------------ | ------------ |
-| Amazon API Gateway | 1,000,000 REST API calls per month  | $ 3.50month |
-| Amazon Cognito | 1,000 active users per month without advanced security feature | $ 0.00 |
+| Target | Description | Use Case |
+|--------|-------------|----------|
+| **CloudFront** | Global CDN protection | Static websites, global applications |
+| **Application Load Balancer** | Regional protection | Dynamic applications, APIs |
 
-## Prerequisites (required)
+## 🔧 Protection Features
 
-### Operating System (required)
+### Core Security Rules
 
-- Talk about the base Operating System (OS) and environment that can be used to run or deploy this Guidance, such as *Mac, Linux, or Windows*. Include all installable packages or modules required for the deployment. 
-- By default, assume Amazon Linux 2/Amazon Linux 2023 AMI as the base environment. All packages that are not available by default in AMI must be listed out.  Include the specific version number of the package or module.
+| Protection Type | Description | Default Status |
+|----------------|-------------|----------------|
+| **SQL Injection** | Blocks malicious SQL queries | ✅ Enabled |
+| **Cross-Site Scripting** | Prevents XSS attacks | ✅ Enabled |
+| **HTTP Flood Protection** | Rate-based DDoS protection | ✅ Enabled |
+| **Bad Bot Protection** | Blocks malicious crawlers | ✅ Enabled |
+| **Scanner Protection** | Detects reconnaissance attempts | ✅ Enabled |
+| **Reputation Lists** | IP-based threat intelligence | ✅ Enabled |
 
-**Example:**
-“These deployment instructions are optimized to best work on **<Amazon Linux 2 AMI>**.  Deployment in another OS may require additional steps.”
+### Advanced Features
 
-- Include install commands for packages, if applicable.
+- **🔄 Automatic IP Management** - Dynamic blocking and allowlisting
+- **📊 Real-time Analytics** - CloudWatch dashboards and metrics
+- **🚨 Alert System** - SNS notifications for security events
+- **🗂️ Log Analysis** - Automated parsing with Lambda and Athena
+- **⏰ Configurable Retention** - Customizable IP blocking periods
 
+## 📋 Configuration Parameters
 
-### Third-party tools (If applicable)
+### Essential Settings
 
-*List any installable third-party tools required for deployment.*
+| Parameter | Description | Default | Options |
+|-----------|-------------|---------|---------|
+| `end_point` | Deployment target | `cloudfront` | `cloudfront`, `ALB` |
+| `activate_http_flood_protection_param` | DDoS protection method | `yes - AWS WAF rate based rule` | See [HTTP Flood Options](#http-flood-options) |
+| `sns_email_param` | Email for security alerts | `""` | Your email address |
 
+### HTTP Flood Protection Options
 
-### AWS account requirements (If applicable)
+- `yes – AWS Lambda log parser` - Advanced analysis with custom logic
+- `yes – Amazon Athena log parser` - SQL-based log analysis  
+- `yes – AWS WAF rate-based rule` - Built-in rate limiting (recommended)
 
-*List out pre-requisites required on the AWS account if applicable, this includes enabling AWS regions, requiring ACM certificate.*
+## 📊 Monitoring and Observability
 
-**Example:** “This deployment requires you have public ACM certificate available in your AWS account”
+After deployment, you'll have access to:
 
-**Example resources:**
-- ACM certificate 
-- DNS record
-- S3 bucket
-- VPC
-- IAM role with specific permissions
-- Enabling a Region or service etc.
+- **📈 CloudWatch Dashboard** - Real-time security metrics
+- **📧 Email Alerts** - Immediate notification of threats
+- **🗃️ Centralized Logging** - All WAF logs in S3
+- **🔍 Athena Queries** - Advanced log analysis capabilities
 
+## 🚨 Known Issues & Solutions
 
-### aws cdk bootstrap (if sample code has aws-cdk)
+### WAFv2 IPSet Deletion Error
 
-<If using aws-cdk, include steps for account bootstrap for new cdk users.>
+**Issue**: `WAFOptimisticLockException` during `terraform destroy`
 
-**Example blurb:** “This Guidance uses aws-cdk. If you are using aws-cdk for first time, please perform the below bootstrapping....”
+**Solution**: 
+```bash
+# Manually delete IPSets in AWS Console, then retry
+terraform destroy
+```
 
-### Service limits  (if applicable)
+**Reference**: [Terraform AWS Provider Issue #21136](https://github.com/hashicorp/terraform-provider-aws/issues/21136)
 
-<Talk about any critical service limits that affect the regular functioning of the Guidance. If the Guidance requires service limit increase, include the service name, limit name and link to the service quotas page.>
+## 🔄 Alternative Deployment Methods
 
-### Supported Regions (if applicable)
+### CloudFormation Option
 
-<If the Guidance is built for specific AWS Regions, or if the services used in the Guidance do not support all Regions, please specify the Region this Guidance is best suited for>
+For CloudFormation deployment, see the official AWS solution:
+[Security Automations for AWS WAF](https://docs.aws.amazon.com/solutions/latest/security-automations-for-aws-waf/solution-overview.html)
 
+### Custom Implementation
 
-## Deployment Steps (required)
-
-Deployment steps must be numbered, comprehensive, and usable to customers at any level of AWS expertise. The steps must include the precise commands to run, and describe the action it performs.
-
-* All steps must be numbered.
-* If the step requires manual actions from the AWS console, include a screenshot if possible.
-* The steps must start with the following command to clone the repo. ```git clone xxxxxxx```
-* If applicable, provide instructions to create the Python virtual environment, and installing the packages using ```requirement.txt```.
-* If applicable, provide instructions to capture the deployed resource ARN or ID using the CLI command (recommended), or console action.
-
- 
-**Example:**
-
-1. Clone the repo using command ```git clone xxxxxxxxxx```
-2. cd to the repo folder ```cd <repo-name>```
-3. Install packages in requirements using command ```pip install requirement.txt```
-4. Edit content of **file-name** and replace **s3-bucket** with the bucket name in your account.
-5. Run this command to deploy the stack ```cdk deploy``` 
-6. Capture the domain name created by running this CLI command ```aws apigateway ............```
-
-
-
-## Deployment Validation  (required)
-
-<Provide steps to validate a successful deployment, such as terminal output, verifying that the resource is created, status of the CloudFormation template, etc.>
-
-
-**Examples:**
-
-* Open CloudFormation console and verify the status of the template with the name starting with xxxxxx.
-* If deployment is successful, you should see an active database instance with the name starting with <xxxxx> in        the RDS console.
-*  Run the following CLI command to validate the deployment: ```aws cloudformation describe xxxxxxxxxxxxx```
-
-
-
-## Running the Guidance (required)
-
-<Provide instructions to run the Guidance with the sample data or input provided, and interpret the output received.> 
-
-This section should include:
-
-* Guidance inputs
-* Commands to run
-* Expected output (provide screenshot if possible)
-* Output description
-
-
-
-## Next Steps (required)
-
-Provide suggestions and recommendations about how customers can modify the parameters and the components of the Guidance to further enhance it according to their requirements.
-
-
-## Cleanup (required)
-
-- Include detailed instructions, commands, and console actions to delete the deployed Guidance.
-- If the Guidance requires manual deletion of resources, such as the content of an S3 bucket, please specify.
-
-
-
-## FAQ, known issues, additional considerations, and limitations (optional)
-
-
-**Known issues (optional)**
-
-<If there are common known issues, or errors that can occur during the Guidance deployment, describe the issue and resolution steps here>
-
-
-**Additional considerations (if applicable)**
-
-<Include considerations the customer must know while using the Guidance, such as anti-patterns, or billing considerations.>
-
-**Examples:**
-
-- “This Guidance creates a public AWS bucket required for the use-case.”
-- “This Guidance created an Amazon SageMaker notebook that is billed per hour irrespective of usage.”
-- “This Guidance creates unauthenticated public API endpoints.”
-
-
-Provide a link to the *GitHub issues page* for users to provide feedback.
-
-
-**Example:** *“For any feedback, questions, or suggestions, please use the issues tab under this repo.”*
-
-## Revisions (optional)
-
-Document all notable changes to this project.
-
-Consider formatting this section based on Keep a Changelog, and adhering to Semantic Versioning.
-
-## Notices (optional)
-
-Include a legal disclaimer
-
-**Example:**
-*Customers are responsible for making their own independent assessment of the information in this Guidance. This Guidance: (a) is for informational purposes only, (b) represents AWS current product offerings and practices, which are subject to change without notice, and (c) does not create any commitments or assurances from AWS and its affiliates, suppliers or licensors. AWS products or services are provided “as is” without warranties, representations, or conditions of any kind, whether express or implied. AWS responsibilities and liabilities to its customers are controlled by AWS agreements, and this Guidance is not part of, nor does it modify, any agreement between AWS and its customers.*
-
-
-## Authors (optional)
-
-Name of code contributors
+Create your own configuration by referencing the modules:
+```hcl
+module "waf_security" {
+  source = "path/to/this/module"
+  
+  # Your custom configuration
+  end_point = "ALB"
+  activate_http_flood_protection_param = "yes - AWS Lambda log parser"
+  sns_email_param = "security@yourcompany.com"
+}
+```
+
+## 💰 Cost Considerations
+
+This solution incurs costs for:
+- AWS WAF requests and rules
+- Lambda function executions
+- S3 storage for logs
+- CloudWatch logs and metrics
+- Athena query processing
+
+Use the [AWS Pricing Calculator](https://calculator.aws) to estimate costs for your specific usage patterns.
+
+## 🔒 Security Best Practices
+
+- **🔐 Least Privilege**: Use IAM roles with minimal required permissions
+- **🔄 Regular Updates**: Keep Terraform and AWS provider versions current
+- **📝 Monitoring**: Set up CloudWatch alarms for unusual activity
+- **🧪 Testing**: Test WAF rules in a staging environment first
+- **📋 Documentation**: Document any custom rule modifications
+
+## 🤝 Contributing
+
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for:
+- How to report issues
+- Development guidelines  
+- Security vulnerability reporting
+
+## 📄 License
+
+This project is licensed under the **MIT-0 License** - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 📚 Technical Documentation
+
+<!-- BEGIN_TF_DOCS -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.7 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.0.0, < 5.0.0 |
+| <a name="requirement_awscc"></a> [awscc](#requirement\_awscc) | >= 0.24.0 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.0.0, < 5.0.0 |
+| <a name="provider_random"></a> [random](#provider\_random) | n/a |
+
+## Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_dashboard"></a> [dashboard](#module\_dashboard) | ./modules/cloudwatch | n/a |
+| <a name="module_firehouse_athena_source"></a> [firehouse\_athena\_source](#module\_firehouse\_athena\_source) | ./modules/firehose_athena_source | n/a |
+| <a name="module_ip_retention_resource"></a> [ip\_retention\_resource](#module\_ip\_retention\_resource) | ./modules/ip_retention_resource | n/a |
+| <a name="module_ip_sets"></a> [ip\_sets](#module\_ip\_sets) | ./modules/waf | n/a |
+| <a name="module_s3_access_logging_bucket"></a> [s3\_access\_logging\_bucket](#module\_s3\_access\_logging\_bucket) | ./modules/s3 | n/a |
+| <a name="module_s3_app_log_bucket"></a> [s3\_app\_log\_bucket](#module\_s3\_app\_log\_bucket) | ./modules/s3 | n/a |
+| <a name="module_s3_app_log_bucket_notification"></a> [s3\_app\_log\_bucket\_notification](#module\_s3\_app\_log\_bucket\_notification) | ./modules/s3_notification | n/a |
+| <a name="module_s3_app_log_bucket_notification_1"></a> [s3\_app\_log\_bucket\_notification\_1](#module\_s3\_app\_log\_bucket\_notification\_1) | ./modules/s3_notification | n/a |
+| <a name="module_s3_iam_role"></a> [s3\_iam\_role](#module\_s3\_iam\_role) | ./modules/iam | n/a |
+| <a name="module_s3_waf_log_bucket"></a> [s3\_waf\_log\_bucket](#module\_s3\_waf\_log\_bucket) | ./modules/s3 | n/a |
+| <a name="module_s3_waf_log_bucket_notification"></a> [s3\_waf\_log\_bucket\_notification](#module\_s3\_waf\_log\_bucket\_notification) | ./modules/s3_notification | n/a |
+| <a name="module_waf_key"></a> [waf\_key](#module\_waf\_key) | ./modules/kms | n/a |
+| <a name="module_waf_resource"></a> [waf\_resource](#module\_waf\_resource) | ./modules/waf_resource | n/a |
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [aws_cloudformation_stack.trigger_codebuild_stack](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudformation_stack) | resource |
+| [random_id.server](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/id) | resource |
+| [random_uuid.test](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/uuid) | resource |
+| [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/region) | data source |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_aws_managed_ap_activated"></a> [aws\_managed\_ap\_activated](#input\_aws\_managed\_ap\_activated) | Enable AWS Managed Rules for Anonymous Proxy | `bool` | n/a | yes |
+| <a name="input_aws_managed_api_activated"></a> [aws\_managed\_api\_activated](#input\_aws\_managed\_api\_activated) | Enable AWS Managed Rules for API Gateway | `bool` | n/a | yes |
+| <a name="input_aws_managed_crs_activated"></a> [aws\_managed\_crs\_activated](#input\_aws\_managed\_crs\_activated) | Enable AWS Managed Core Rule Set | `bool` | n/a | yes |
+| <a name="input_aws_managed_ipr_activated"></a> [aws\_managed\_ipr\_activated](#input\_aws\_managed\_ipr\_activated) | Enable AWS Managed IP Reputation Rules | `bool` | n/a | yes |
+| <a name="input_aws_managed_kbi_activated"></a> [aws\_managed\_kbi\_activated](#input\_aws\_managed\_kbi\_activated) | Enable AWS Managed Known Bad Inputs Rules | `bool` | n/a | yes |
+| <a name="input_aws_managed_linux_activated"></a> [aws\_managed\_linux\_activated](#input\_aws\_managed\_linux\_activated) | Enable AWS Managed Linux Operating System Rules | `bool` | n/a | yes |
+| <a name="input_aws_managed_php_activated"></a> [aws\_managed\_php\_activated](#input\_aws\_managed\_php\_activated) | Enable AWS Managed PHP Application Rules | `bool` | n/a | yes |
+| <a name="input_aws_managed_posix_activated"></a> [aws\_managed\_posix\_activated](#input\_aws\_managed\_posix\_activated) | Enable AWS Managed POSIX Operating System Rules | `bool` | n/a | yes |
+| <a name="input_aws_managed_sql_activated"></a> [aws\_managed\_sql\_activated](#input\_aws\_managed\_sql\_activated) | Enable AWS Managed SQL Database Rules | `bool` | n/a | yes |
+| <a name="input_aws_managed_windows_activated"></a> [aws\_managed\_windows\_activated](#input\_aws\_managed\_windows\_activated) | Enable AWS Managed Windows Operating System Rules | `bool` | n/a | yes |
+| <a name="input_aws_managed_wp_activated"></a> [aws\_managed\_wp\_activated](#input\_aws\_managed\_wp\_activated) | Enable AWS Managed WordPress Application Rules | `bool` | n/a | yes |
+| <a name="input_cross_site_scripting_protection_activated"></a> [cross\_site\_scripting\_protection\_activated](#input\_cross\_site\_scripting\_protection\_activated) | Enable Cross-Site Scripting (XSS) protection | `bool` | n/a | yes |
+| <a name="input_sql_injection_protection_activated"></a> [sql\_injection\_protection\_activated](#input\_sql\_injection\_protection\_activated) | Enable SQL Injection protection | `bool` | n/a | yes |
+| <a name="input_access_logging_bucket_name"></a> [access\_logging\_bucket\_name](#input\_access\_logging\_bucket\_name) | Name of existing S3 bucket for access logging | `string` | `null` | no |
+| <a name="input_activate_aws_managed_rules_param"></a> [activate\_aws\_managed\_rules\_param](#input\_activate\_aws\_managed\_rules\_param) | Activate AWS Managed Rules | `string` | `"no"` | no |
+| <a name="input_activate_bad_bot_protection_param"></a> [activate\_bad\_bot\_protection\_param](#input\_activate\_bad\_bot\_protection\_param) | Activate bad bot protection | `string` | `"yes"` | no |
+| <a name="input_activate_cross_site_scripting_protection_param"></a> [activate\_cross\_site\_scripting\_protection\_param](#input\_activate\_cross\_site\_scripting\_protection\_param) | Activate Cross-Site Scripting protection | `string` | `"yes"` | no |
+| <a name="input_activate_http_flood_protection_param"></a> [activate\_http\_flood\_protection\_param](#input\_activate\_http\_flood\_protection\_param) | HTTP flood protection method | `string` | `"yes - AWS WAF rate based rule"` | no |
+| <a name="input_activate_reputation_lists_protection_param"></a> [activate\_reputation\_lists\_protection\_param](#input\_activate\_reputation\_lists\_protection\_param) | Activate reputation lists protection | `string` | `"yes"` | no |
+| <a name="input_activate_scanners_probes_protection_param"></a> [activate\_scanners\_probes\_protection\_param](#input\_activate\_scanners\_probes\_protection\_param) | Activate scanners and probes protection | `string` | `""` | no |
+| <a name="input_activate_sql_injection_protection_param"></a> [activate\_sql\_injection\_protection\_param](#input\_activate\_sql\_injection\_protection\_param) | Activate SQL injection protection | `string` | `"yes"` | no |
+| <a name="input_api_stage"></a> [api\_stage](#input\_api\_stage) | API Gateway stage name | `string` | `"ProdStage"` | no |
+| <a name="input_app_access_log_bucket_logging_enabled"></a> [app\_access\_log\_bucket\_logging\_enabled](#input\_app\_access\_log\_bucket\_logging\_enabled) | Enable application access log bucket logging | `string` | `"no"` | no |
+| <a name="input_athena_query_run_time_schedule_param"></a> [athena\_query\_run\_time\_schedule\_param](#input\_athena\_query\_run\_time\_schedule\_param) | Athena query runtime schedule in hours | `number` | `4` | no |
+| <a name="input_bad_bot_protection_activated"></a> [bad\_bot\_protection\_activated](#input\_bad\_bot\_protection\_activated) | Enable bad bot protection | `string` | `"yes"` | no |
+| <a name="input_create_access_logging_bucket"></a> [create\_access\_logging\_bucket](#input\_create\_access\_logging\_bucket) | Create new access logging bucket | `string` | `"no"` | no |
+| <a name="input_end_point"></a> [end\_point](#input\_end\_point) | Deployment target: CloudFront or Application Load Balancer | `string` | `"cloudfront"` | no |
+| <a name="input_error_threshold"></a> [error\_threshold](#input\_error\_threshold) | Error threshold for log monitoring | `number` | `50` | no |
+| <a name="input_http_flood_athena_query_group_by_param"></a> [http\_flood\_athena\_query\_group\_by\_param](#input\_http\_flood\_athena\_query\_group\_by\_param) | HTTP flood Athena query group by parameter | `string` | `"None"` | no |
+| <a name="input_ip_retention_period"></a> [ip\_retention\_period](#input\_ip\_retention\_period) | Enable IP retention period management | `string` | `"yes"` | no |
+| <a name="input_ip_retention_period_allowed_param"></a> [ip\_retention\_period\_allowed\_param](#input\_ip\_retention\_period\_allowed\_param) | IP retention period for allowed IPs (minutes, -1 for permanent) | `number` | `-1` | no |
+| <a name="input_ip_retention_period_denied_param"></a> [ip\_retention\_period\_denied\_param](#input\_ip\_retention\_period\_denied\_param) | IP retention period for denied IPs (minutes, -1 for permanent) | `number` | `-1` | no |
+| <a name="input_keep_original_data"></a> [keep\_original\_data](#input\_keep\_original\_data) | Keep original data in S3 | `string` | `"No"` | no |
+| <a name="input_key_prefix"></a> [key\_prefix](#input\_key\_prefix) | S3 key prefix for Lambda source code | `string` | `"security-automations-for-aws-waf"` | no |
+| <a name="input_reputation_lists_protection_activated"></a> [reputation\_lists\_protection\_activated](#input\_reputation\_lists\_protection\_activated) | Enable reputation lists protection | `string` | `"yes"` | no |
+| <a name="input_request_threshold"></a> [request\_threshold](#input\_request\_threshold) | Request threshold for log monitoring | `number` | `100` | no |
+| <a name="input_request_threshold_by_country_param"></a> [request\_threshold\_by\_country\_param](#input\_request\_threshold\_by\_country\_param) | Enable request threshold by country | `string` | `"no"` | no |
+| <a name="input_resolve_count"></a> [resolve\_count](#input\_resolve\_count) | Enable resolve count functionality | `string` | `"yes"` | no |
+| <a name="input_retention_in_days"></a> [retention\_in\_days](#input\_retention\_in\_days) | Log retention period in days | `number` | `365` | no |
+| <a name="input_scanners_probes_protection_activated"></a> [scanners\_probes\_protection\_activated](#input\_scanners\_probes\_protection\_activated) | Enable scanners and probes protection | `string` | `"yes"` | no |
+| <a name="input_send_anonymous_usage_data"></a> [send\_anonymous\_usage\_data](#input\_send\_anonymous\_usage\_data) | Send anonymous usage data to AWS | `string` | `"yes"` | no |
+| <a name="input_sns_email_param"></a> [sns\_email\_param](#input\_sns\_email\_param) | Email address for SNS notifications | `string` | `""` | no |
+| <a name="input_source_version"></a> [source\_version](#input\_source\_version) | Source code version | `string` | `"v4.0.2"` | no |
+| <a name="input_sse_algorithm"></a> [sse\_algorithm](#input\_sse\_algorithm) | S3 server-side encryption algorithm | `string` | `"aws:kms"` | no |
+| <a name="input_user_agent_extra"></a> [user\_agent\_extra](#input\_user\_agent\_extra) | Additional user agent string | `string` | `"AwsSolution/SO0006-tf"` | no |
+| <a name="input_user_defined_app_access_log_bucket_prefix"></a> [user\_defined\_app\_access\_log\_bucket\_prefix](#input\_user\_defined\_app\_access\_log\_bucket\_prefix) | Custom prefix for application access logs | `string` | `"AWSLogs"` | no |
+| <a name="input_waf_block_period"></a> [waf\_block\_period](#input\_waf\_block\_period) | WAF block period in minutes | `number` | `240` | no |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_app_access_log_bucket"></a> [app\_access\_log\_bucket](#output\_app\_access\_log\_bucket) | Name of Application Access Log S3 Bucket |
+| <a name="output_bad_bot_honey_end_point"></a> [bad\_bot\_honey\_end\_point](#output\_bad\_bot\_honey\_end\_point) | URL of bad bot honey pot endpoint |
+| <a name="output_badbot_honeyendpoint"></a> [badbot\_honeyendpoint](#output\_badbot\_honeyendpoint) | URL of bad bot honey pot endpoint |
+| <a name="output_badbot_ipv4_name"></a> [badbot\_ipv4\_name](#output\_badbot\_ipv4\_name) | Name of bad bot IPv4 IP set |
+| <a name="output_waf_acl_arn"></a> [waf\_acl\_arn](#output\_waf\_acl\_arn) | ARN of the WAF Web ACL |
+| <a name="output_waf_log_bucket"></a> [waf\_log\_bucket](#output\_waf\_log\_bucket) | Name of WAF Log S3 Bucket |
+| <a name="output_waf_web_acl"></a> [waf\_web\_acl](#output\_waf\_web\_acl) | Name of the WAF Web ACL |
+<!-- END_TF_DOCS -->
