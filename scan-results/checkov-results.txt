@@ -1,0 +1,1875 @@
+
+
+       _               _              
+   ___| |__   ___  ___| | _______   __
+  / __| '_ \ / _ \/ __| |/ / _ \ \ / /
+ | (__| | | |  __/ (__|   < (_) \ V / 
+  \___|_| |_|\___|\___|_|\_\___/ \_/  
+                                      
+By bridgecrew.io | version: 2.3.240 
+Update available 2.3.240 -> 2.3.244
+Run pip3 install -U checkov to update 
+
+
+terraform scan results:
+
+Passed checks: 339, Failed checks: 0, Skipped checks: 36, Parsing errors: 1
+
+Check: CKV_AWS_237: "Ensure Create before destroy for API GATEWAY"
+	PASSED for resource: module.api_gateway.aws_api_gateway_rest_api.this
+	File: /modules/apigateway/main.tf:9-15
+	Calling File: /modules/waf_resource/main.tf:887-897
+	Guide: https://docs.bridgecrew.io/docs/ensure-aws-api-gateway-enables-create-before-destroy
+Check: CKV_AWS_217: "Ensure Create before destroy for API deployments"
+	PASSED for resource: module.api_gateway.aws_api_gateway_deployment.Deployment
+	File: /modules/apigateway/main.tf:63-73
+	Calling File: /modules/waf_resource/main.tf:887-897
+	Guide: https://docs.bridgecrew.io/docs/ensure-aws-api-deployments-enable-create-before-destroy
+Check: CKV_AWS_66: "Ensure that CloudWatch Log Group specifies retention days"
+	PASSED for resource: module.api_gateway.aws_cloudwatch_log_group.ApiGatewayBadBotStageAccessLogGroup
+	File: /modules/apigateway/main.tf:75-80
+	Calling File: /modules/waf_resource/main.tf:887-897
+	Guide: https://docs.bridgecrew.io/docs/logging_13
+Check: CKV_AWS_158: "Ensure that CloudWatch Log Group is encrypted by KMS"
+	PASSED for resource: module.api_gateway.aws_cloudwatch_log_group.ApiGatewayBadBotStageAccessLogGroup
+	File: /modules/apigateway/main.tf:75-80
+	Calling File: /modules/waf_resource/main.tf:887-897
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-cloudwatch-log-group-is-encrypted-by-kms
+Check: CKV_AWS_76: "Ensure API Gateway has Access Logging enabled"
+	PASSED for resource: module.api_gateway.aws_api_gateway_stage.Stage
+	File: /modules/apigateway/main.tf:82-106
+	Calling File: /modules/waf_resource/main.tf:887-897
+	Guide: https://docs.bridgecrew.io/docs/logging_17
+Check: CKV_AWS_301: "Ensure that AWS Lambda function is not publicly accessible"
+	PASSED for resource: module.api_gateway.aws_lambda_permission.this
+	File: /modules/apigateway/main.tf:113-118
+	Calling File: /modules/waf_resource/main.tf:887-897
+Check: CKV_AWS_82: "Ensure Athena Workgroup should enforce configuration to prevent client disabling encryption"
+	PASSED for resource: module.waf_add_partition_athena_query_workgroup.aws_athena_workgroup.default
+	File: /modules/athena/main.tf:1-18
+	Calling File: /modules/firehose_athena_source/main.tf:312-322
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_general_33
+Check: CKV_AWS_159: "Ensure that Athena Workgroup is encrypted"
+	PASSED for resource: module.waf_add_partition_athena_query_workgroup.aws_athena_workgroup.default
+	File: /modules/athena/main.tf:1-18
+	Calling File: /modules/firehose_athena_source/main.tf:312-322
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-athena-workgroup-is-encrypted
+Check: CKV_AWS_82: "Ensure Athena Workgroup should enforce configuration to prevent client disabling encryption"
+	PASSED for resource: module.waf_app_access_log_athena_query_workgroup.aws_athena_workgroup.default
+	File: /modules/athena/main.tf:1-18
+	Calling File: /modules/firehose_athena_source/main.tf:336-346
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_general_33
+Check: CKV_AWS_159: "Ensure that Athena Workgroup is encrypted"
+	PASSED for resource: module.waf_app_access_log_athena_query_workgroup.aws_athena_workgroup.default
+	File: /modules/athena/main.tf:1-18
+	Calling File: /modules/firehose_athena_source/main.tf:336-346
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-athena-workgroup-is-encrypted
+Check: CKV_AWS_82: "Ensure Athena Workgroup should enforce configuration to prevent client disabling encryption"
+	PASSED for resource: module.waf_log_athena_query_workgroup.aws_athena_workgroup.default
+	File: /modules/athena/main.tf:1-18
+	Calling File: /modules/firehose_athena_source/main.tf:324-334
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_general_33
+Check: CKV_AWS_159: "Ensure that Athena Workgroup is encrypted"
+	PASSED for resource: module.waf_log_athena_query_workgroup.aws_athena_workgroup.default
+	File: /modules/athena/main.tf:1-18
+	Calling File: /modules/firehose_athena_source/main.tf:324-334
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-athena-workgroup-is-encrypted
+Check: CKV_AWS_28: "Ensure Dynamodb point in time recovery (backup) is enabled"
+	PASSED for resource: module.ip_retention_ddb_table.aws_dynamodb_table.this
+	File: /modules/dynamodb/main.tf:1-31
+	Calling File: /modules/ip_retention_resource/main.tf:59-84
+	Guide: https://docs.bridgecrew.io/docs/general_6
+Check: CKV_AWS_119: "Ensure DynamoDB Tables are encrypted using a KMS Customer Managed CMK"
+	PASSED for resource: module.ip_retention_ddb_table.aws_dynamodb_table.this
+	File: /modules/dynamodb/main.tf:1-31
+	Calling File: /modules/ip_retention_resource/main.tf:59-84
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-dynamodb-tables-are-encrypted
+Check: CKV_AWS_301: "Ensure that AWS Lambda function is not publicly accessible"
+	PASSED for resource: module.lambda_add_athena_partitions.aws_lambda_permission.this[0]
+	File: /modules/eventbridge/main.tf:18-25
+	Calling File: /modules/firehose_athena_source/main.tf:348-371
+Check: CKV_AWS_301: "Ensure that AWS Lambda function is not publicly accessible"
+	PASSED for resource: module.set_ip_retention.aws_lambda_permission.this[0]
+	File: /modules/eventbridge/main.tf:18-25
+	Calling File: /modules/ip_retention_resource/main.tf:117-145
+Check: CKV_AWS_301: "Ensure that AWS Lambda function is not publicly accessible"
+	PASSED for resource: module.lambda_athena_app_logparser_lambda_permission.aws_lambda_permission.this[0]
+	File: /modules/eventbridge/main.tf:18-25
+	Calling File: /modules/waf_resource/main.tf:749-756
+Check: CKV_AWS_301: "Ensure that AWS Lambda function is not publicly accessible"
+	PASSED for resource: module.lambda_athena_waf_logparser_lambda_permission.aws_lambda_permission.this[0]
+	File: /modules/eventbridge/main.tf:18-25
+	Calling File: /modules/waf_resource/main.tf:740-747
+Check: CKV_AWS_301: "Ensure that AWS Lambda function is not publicly accessible"
+	PASSED for resource: module.log_parsers3_lambda_permission.aws_lambda_permission.this[0]
+	File: /modules/eventbridge/main.tf:18-25
+	Calling File: /modules/waf_resource/main.tf:758-765
+Check: CKV_AWS_301: "Ensure that AWS Lambda function is not publicly accessible"
+	PASSED for resource: module.moves3logs_lambda_permission.aws_lambda_permission.this[0]
+	File: /modules/eventbridge/main.tf:18-25
+	Calling File: /modules/waf_resource/main.tf:767-774
+Check: CKV_AWS_301: "Ensure that AWS Lambda function is not publicly accessible"
+	PASSED for resource: module.reputation_lists_parser.aws_lambda_permission.this[0]
+	File: /modules/eventbridge/main.tf:18-25
+	Calling File: /modules/waf_resource/main.tf:843-870
+Check: CKV_AWS_241: "Ensure that Kinesis Firehose Delivery Streams are encrypted with CMK"
+	PASSED for resource: module.firehose_athena.aws_kinesis_firehose_delivery_stream.FirehoseAthena
+	File: /modules/firehose/main.tf:1-17
+	Calling File: /modules/firehose_athena_source/main.tf:134-141
+	Guide: https://docs.bridgecrew.io/docs/ensure-aws-kinesis-firehose-delivery-streams-are-encrypted-with-cmk
+Check: CKV_AWS_240: "Ensure Kinesis Firehose delivery stream is encrypted"
+	PASSED for resource: module.firehose_athena.aws_kinesis_firehose_delivery_stream.FirehoseAthena
+	File: /modules/firehose/main.tf:1-17
+	Calling File: /modules/firehose_athena_source/main.tf:134-141
+	Guide: https://docs.bridgecrew.io/docs/ensure-aws-kinesis-firehoses-delivery-stream-is-encrypted
+Check: CKV_AWS_108: "Ensure IAM policies does not allow data exfiltration"
+	PASSED for resource: module.add_athena_partitions_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/firehose_athena_source/main.tf:11-68
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-data-exfiltration
+Check: CKV_AWS_111: "Ensure IAM policies does not allow write access without constraints"
+	PASSED for resource: module.add_athena_partitions_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/firehose_athena_source/main.tf:11-68
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-write-access-without-constraint
+Check: CKV_AWS_49: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.add_athena_partitions_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/firehose_athena_source/main.tf:11-68
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_43
+Check: CKV_AWS_107: "Ensure IAM policies does not allow credentials exposure"
+	PASSED for resource: module.add_athena_partitions_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/firehose_athena_source/main.tf:11-68
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-credentials-exposure
+Check: CKV_AWS_109: "Ensure IAM policies does not allow permissions management / resource exposure without constraints"
+	PASSED for resource: module.add_athena_partitions_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/firehose_athena_source/main.tf:11-68
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-permissions-management-resource-exposure-without-constraint
+Check: CKV_AWS_283: "Ensure no IAM policies documents allow ALL or any AWS principal permissions to the resource"
+	PASSED for resource: module.add_athena_partitions_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/firehose_athena_source/main.tf:11-68
+Check: CKV_AWS_1: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.add_athena_partitions_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/firehose_athena_source/main.tf:11-68
+	Guide: https://docs.bridgecrew.io/docs/iam_23
+Check: CKV_AWS_110: "Ensure IAM policies does not allow privilege escalation"
+	PASSED for resource: module.add_athena_partitions_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/firehose_athena_source/main.tf:11-68
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-does-not-allow-privilege-escalation
+Check: CKV_AWS_108: "Ensure IAM policies does not allow data exfiltration"
+	PASSED for resource: module.add_athena_partitions_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/firehose_athena_source/main.tf:11-68
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-data-exfiltration
+Check: CKV_AWS_111: "Ensure IAM policies does not allow write access without constraints"
+	PASSED for resource: module.add_athena_partitions_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/firehose_athena_source/main.tf:11-68
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-write-access-without-constraint
+Check: CKV_AWS_49: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.add_athena_partitions_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/firehose_athena_source/main.tf:11-68
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_43
+Check: CKV_AWS_107: "Ensure IAM policies does not allow credentials exposure"
+	PASSED for resource: module.add_athena_partitions_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/firehose_athena_source/main.tf:11-68
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-credentials-exposure
+Check: CKV_AWS_109: "Ensure IAM policies does not allow permissions management / resource exposure without constraints"
+	PASSED for resource: module.add_athena_partitions_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/firehose_athena_source/main.tf:11-68
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-permissions-management-resource-exposure-without-constraint
+Check: CKV_AWS_283: "Ensure no IAM policies documents allow ALL or any AWS principal permissions to the resource"
+	PASSED for resource: module.add_athena_partitions_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/firehose_athena_source/main.tf:11-68
+Check: CKV_AWS_1: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.add_athena_partitions_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/firehose_athena_source/main.tf:11-68
+	Guide: https://docs.bridgecrew.io/docs/iam_23
+Check: CKV_AWS_110: "Ensure IAM policies does not allow privilege escalation"
+	PASSED for resource: module.add_athena_partitions_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/firehose_athena_source/main.tf:11-68
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-does-not-allow-privilege-escalation
+Check: CKV_AWS_274: "Disallow IAM roles, users, and groups from using the AWS AdministratorAccess policy"
+	PASSED for resource: module.add_athena_partitions_iam_role.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/firehose_athena_source/main.tf:11-68
+Check: CKV_AWS_61: "Ensure AWS IAM policy does not allow assume role permission across all services"
+	PASSED for resource: module.add_athena_partitions_iam_role.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/firehose_athena_source/main.tf:11-68
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_45
+Check: CKV_AWS_60: "Ensure IAM role allows only specific services or principals to assume it"
+	PASSED for resource: module.add_athena_partitions_iam_role.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/firehose_athena_source/main.tf:11-68
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_44
+Check: CKV_AWS_63: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.add_athena_partitions_iam_role.aws_iam_role_policy.policy
+	File: /modules/iam/main.tf:58-62
+	Calling File: /modules/firehose_athena_source/main.tf:11-68
+	Guide: https://docs.bridgecrew.io/docs/iam_48
+Check: CKV_AWS_62: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.add_athena_partitions_iam_role.aws_iam_role_policy.policy
+	File: /modules/iam/main.tf:58-62
+	Calling File: /modules/firehose_athena_source/main.tf:11-68
+	Guide: https://docs.bridgecrew.io/docs/iam_47
+Check: CKV_AWS_108: "Ensure IAM policies does not allow data exfiltration"
+	PASSED for resource: module.firehose_athena_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/firehose_athena_source/main.tf:70-109
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-data-exfiltration
+Check: CKV_AWS_111: "Ensure IAM policies does not allow write access without constraints"
+	PASSED for resource: module.firehose_athena_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/firehose_athena_source/main.tf:70-109
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-write-access-without-constraint
+Check: CKV_AWS_49: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.firehose_athena_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/firehose_athena_source/main.tf:70-109
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_43
+Check: CKV_AWS_107: "Ensure IAM policies does not allow credentials exposure"
+	PASSED for resource: module.firehose_athena_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/firehose_athena_source/main.tf:70-109
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-credentials-exposure
+Check: CKV_AWS_109: "Ensure IAM policies does not allow permissions management / resource exposure without constraints"
+	PASSED for resource: module.firehose_athena_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/firehose_athena_source/main.tf:70-109
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-permissions-management-resource-exposure-without-constraint
+Check: CKV_AWS_283: "Ensure no IAM policies documents allow ALL or any AWS principal permissions to the resource"
+	PASSED for resource: module.firehose_athena_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/firehose_athena_source/main.tf:70-109
+Check: CKV_AWS_1: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.firehose_athena_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/firehose_athena_source/main.tf:70-109
+	Guide: https://docs.bridgecrew.io/docs/iam_23
+Check: CKV_AWS_110: "Ensure IAM policies does not allow privilege escalation"
+	PASSED for resource: module.firehose_athena_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/firehose_athena_source/main.tf:70-109
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-does-not-allow-privilege-escalation
+Check: CKV_AWS_108: "Ensure IAM policies does not allow data exfiltration"
+	PASSED for resource: module.firehose_athena_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/firehose_athena_source/main.tf:70-109
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-data-exfiltration
+Check: CKV_AWS_111: "Ensure IAM policies does not allow write access without constraints"
+	PASSED for resource: module.firehose_athena_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/firehose_athena_source/main.tf:70-109
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-write-access-without-constraint
+Check: CKV_AWS_49: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.firehose_athena_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/firehose_athena_source/main.tf:70-109
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_43
+Check: CKV_AWS_107: "Ensure IAM policies does not allow credentials exposure"
+	PASSED for resource: module.firehose_athena_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/firehose_athena_source/main.tf:70-109
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-credentials-exposure
+Check: CKV_AWS_109: "Ensure IAM policies does not allow permissions management / resource exposure without constraints"
+	PASSED for resource: module.firehose_athena_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/firehose_athena_source/main.tf:70-109
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-permissions-management-resource-exposure-without-constraint
+Check: CKV_AWS_283: "Ensure no IAM policies documents allow ALL or any AWS principal permissions to the resource"
+	PASSED for resource: module.firehose_athena_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/firehose_athena_source/main.tf:70-109
+Check: CKV_AWS_1: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.firehose_athena_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/firehose_athena_source/main.tf:70-109
+	Guide: https://docs.bridgecrew.io/docs/iam_23
+Check: CKV_AWS_110: "Ensure IAM policies does not allow privilege escalation"
+	PASSED for resource: module.firehose_athena_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/firehose_athena_source/main.tf:70-109
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-does-not-allow-privilege-escalation
+Check: CKV_AWS_274: "Disallow IAM roles, users, and groups from using the AWS AdministratorAccess policy"
+	PASSED for resource: module.firehose_athena_iam_role.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/firehose_athena_source/main.tf:70-109
+Check: CKV_AWS_61: "Ensure AWS IAM policy does not allow assume role permission across all services"
+	PASSED for resource: module.firehose_athena_iam_role.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/firehose_athena_source/main.tf:70-109
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_45
+Check: CKV_AWS_60: "Ensure IAM role allows only specific services or principals to assume it"
+	PASSED for resource: module.firehose_athena_iam_role.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/firehose_athena_source/main.tf:70-109
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_44
+Check: CKV_AWS_63: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.firehose_athena_iam_role.aws_iam_role_policy.policy
+	File: /modules/iam/main.tf:58-62
+	Calling File: /modules/firehose_athena_source/main.tf:70-109
+	Guide: https://docs.bridgecrew.io/docs/iam_48
+Check: CKV_AWS_62: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.firehose_athena_iam_role.aws_iam_role_policy.policy
+	File: /modules/iam/main.tf:58-62
+	Calling File: /modules/firehose_athena_source/main.tf:70-109
+	Guide: https://docs.bridgecrew.io/docs/iam_47
+Check: CKV_AWS_108: "Ensure IAM policies does not allow data exfiltration"
+	PASSED for resource: module.remove_expired_ip_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/ip_retention_resource/main.tf:149-190
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-data-exfiltration
+Check: CKV_AWS_111: "Ensure IAM policies does not allow write access without constraints"
+	PASSED for resource: module.remove_expired_ip_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/ip_retention_resource/main.tf:149-190
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-write-access-without-constraint
+Check: CKV_AWS_49: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.remove_expired_ip_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/ip_retention_resource/main.tf:149-190
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_43
+Check: CKV_AWS_107: "Ensure IAM policies does not allow credentials exposure"
+	PASSED for resource: module.remove_expired_ip_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/ip_retention_resource/main.tf:149-190
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-credentials-exposure
+Check: CKV_AWS_109: "Ensure IAM policies does not allow permissions management / resource exposure without constraints"
+	PASSED for resource: module.remove_expired_ip_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/ip_retention_resource/main.tf:149-190
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-permissions-management-resource-exposure-without-constraint
+Check: CKV_AWS_283: "Ensure no IAM policies documents allow ALL or any AWS principal permissions to the resource"
+	PASSED for resource: module.remove_expired_ip_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/ip_retention_resource/main.tf:149-190
+Check: CKV_AWS_1: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.remove_expired_ip_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/ip_retention_resource/main.tf:149-190
+	Guide: https://docs.bridgecrew.io/docs/iam_23
+Check: CKV_AWS_110: "Ensure IAM policies does not allow privilege escalation"
+	PASSED for resource: module.remove_expired_ip_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/ip_retention_resource/main.tf:149-190
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-does-not-allow-privilege-escalation
+Check: CKV_AWS_108: "Ensure IAM policies does not allow data exfiltration"
+	PASSED for resource: module.remove_expired_ip_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/ip_retention_resource/main.tf:149-190
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-data-exfiltration
+Check: CKV_AWS_111: "Ensure IAM policies does not allow write access without constraints"
+	PASSED for resource: module.remove_expired_ip_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/ip_retention_resource/main.tf:149-190
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-write-access-without-constraint
+Check: CKV_AWS_49: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.remove_expired_ip_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/ip_retention_resource/main.tf:149-190
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_43
+Check: CKV_AWS_107: "Ensure IAM policies does not allow credentials exposure"
+	PASSED for resource: module.remove_expired_ip_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/ip_retention_resource/main.tf:149-190
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-credentials-exposure
+Check: CKV_AWS_109: "Ensure IAM policies does not allow permissions management / resource exposure without constraints"
+	PASSED for resource: module.remove_expired_ip_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/ip_retention_resource/main.tf:149-190
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-permissions-management-resource-exposure-without-constraint
+Check: CKV_AWS_283: "Ensure no IAM policies documents allow ALL or any AWS principal permissions to the resource"
+	PASSED for resource: module.remove_expired_ip_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/ip_retention_resource/main.tf:149-190
+Check: CKV_AWS_1: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.remove_expired_ip_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/ip_retention_resource/main.tf:149-190
+	Guide: https://docs.bridgecrew.io/docs/iam_23
+Check: CKV_AWS_110: "Ensure IAM policies does not allow privilege escalation"
+	PASSED for resource: module.remove_expired_ip_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/ip_retention_resource/main.tf:149-190
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-does-not-allow-privilege-escalation
+Check: CKV_AWS_274: "Disallow IAM roles, users, and groups from using the AWS AdministratorAccess policy"
+	PASSED for resource: module.remove_expired_ip_iam_role.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/ip_retention_resource/main.tf:149-190
+Check: CKV_AWS_61: "Ensure AWS IAM policy does not allow assume role permission across all services"
+	PASSED for resource: module.remove_expired_ip_iam_role.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/ip_retention_resource/main.tf:149-190
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_45
+Check: CKV_AWS_60: "Ensure IAM role allows only specific services or principals to assume it"
+	PASSED for resource: module.remove_expired_ip_iam_role.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/ip_retention_resource/main.tf:149-190
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_44
+Check: CKV_AWS_63: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.remove_expired_ip_iam_role.aws_iam_role_policy.policy
+	File: /modules/iam/main.tf:58-62
+	Calling File: /modules/ip_retention_resource/main.tf:149-190
+	Guide: https://docs.bridgecrew.io/docs/iam_48
+Check: CKV_AWS_62: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.remove_expired_ip_iam_role.aws_iam_role_policy.policy
+	File: /modules/iam/main.tf:58-62
+	Calling File: /modules/ip_retention_resource/main.tf:149-190
+	Guide: https://docs.bridgecrew.io/docs/iam_47
+Check: CKV_AWS_108: "Ensure IAM policies does not allow data exfiltration"
+	PASSED for resource: module.set_ip_retention_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/ip_retention_resource/main.tf:88-115
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-data-exfiltration
+Check: CKV_AWS_111: "Ensure IAM policies does not allow write access without constraints"
+	PASSED for resource: module.set_ip_retention_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/ip_retention_resource/main.tf:88-115
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-write-access-without-constraint
+Check: CKV_AWS_49: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.set_ip_retention_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/ip_retention_resource/main.tf:88-115
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_43
+Check: CKV_AWS_107: "Ensure IAM policies does not allow credentials exposure"
+	PASSED for resource: module.set_ip_retention_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/ip_retention_resource/main.tf:88-115
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-credentials-exposure
+Check: CKV_AWS_109: "Ensure IAM policies does not allow permissions management / resource exposure without constraints"
+	PASSED for resource: module.set_ip_retention_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/ip_retention_resource/main.tf:88-115
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-permissions-management-resource-exposure-without-constraint
+Check: CKV_AWS_283: "Ensure no IAM policies documents allow ALL or any AWS principal permissions to the resource"
+	PASSED for resource: module.set_ip_retention_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/ip_retention_resource/main.tf:88-115
+Check: CKV_AWS_1: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.set_ip_retention_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/ip_retention_resource/main.tf:88-115
+	Guide: https://docs.bridgecrew.io/docs/iam_23
+Check: CKV_AWS_110: "Ensure IAM policies does not allow privilege escalation"
+	PASSED for resource: module.set_ip_retention_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/ip_retention_resource/main.tf:88-115
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-does-not-allow-privilege-escalation
+Check: CKV_AWS_108: "Ensure IAM policies does not allow data exfiltration"
+	PASSED for resource: module.set_ip_retention_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/ip_retention_resource/main.tf:88-115
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-data-exfiltration
+Check: CKV_AWS_111: "Ensure IAM policies does not allow write access without constraints"
+	PASSED for resource: module.set_ip_retention_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/ip_retention_resource/main.tf:88-115
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-write-access-without-constraint
+Check: CKV_AWS_49: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.set_ip_retention_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/ip_retention_resource/main.tf:88-115
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_43
+Check: CKV_AWS_107: "Ensure IAM policies does not allow credentials exposure"
+	PASSED for resource: module.set_ip_retention_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/ip_retention_resource/main.tf:88-115
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-credentials-exposure
+Check: CKV_AWS_109: "Ensure IAM policies does not allow permissions management / resource exposure without constraints"
+	PASSED for resource: module.set_ip_retention_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/ip_retention_resource/main.tf:88-115
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-permissions-management-resource-exposure-without-constraint
+Check: CKV_AWS_283: "Ensure no IAM policies documents allow ALL or any AWS principal permissions to the resource"
+	PASSED for resource: module.set_ip_retention_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/ip_retention_resource/main.tf:88-115
+Check: CKV_AWS_1: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.set_ip_retention_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/ip_retention_resource/main.tf:88-115
+	Guide: https://docs.bridgecrew.io/docs/iam_23
+Check: CKV_AWS_110: "Ensure IAM policies does not allow privilege escalation"
+	PASSED for resource: module.set_ip_retention_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/ip_retention_resource/main.tf:88-115
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-does-not-allow-privilege-escalation
+Check: CKV_AWS_274: "Disallow IAM roles, users, and groups from using the AWS AdministratorAccess policy"
+	PASSED for resource: module.set_ip_retention_iam_role.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/ip_retention_resource/main.tf:88-115
+Check: CKV_AWS_61: "Ensure AWS IAM policy does not allow assume role permission across all services"
+	PASSED for resource: module.set_ip_retention_iam_role.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/ip_retention_resource/main.tf:88-115
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_45
+Check: CKV_AWS_60: "Ensure IAM role allows only specific services or principals to assume it"
+	PASSED for resource: module.set_ip_retention_iam_role.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/ip_retention_resource/main.tf:88-115
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_44
+Check: CKV_AWS_63: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.set_ip_retention_iam_role.aws_iam_role_policy.policy
+	File: /modules/iam/main.tf:58-62
+	Calling File: /modules/ip_retention_resource/main.tf:88-115
+	Guide: https://docs.bridgecrew.io/docs/iam_48
+Check: CKV_AWS_62: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.set_ip_retention_iam_role.aws_iam_role_policy.policy
+	File: /modules/iam/main.tf:58-62
+	Calling File: /modules/ip_retention_resource/main.tf:88-115
+	Guide: https://docs.bridgecrew.io/docs/iam_47
+Check: CKV_AWS_108: "Ensure IAM policies does not allow data exfiltration"
+	PASSED for resource: module.api_gateway_badbot_cloudwatchrole.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:899-920
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-data-exfiltration
+Check: CKV_AWS_111: "Ensure IAM policies does not allow write access without constraints"
+	PASSED for resource: module.api_gateway_badbot_cloudwatchrole.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:899-920
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-write-access-without-constraint
+Check: CKV_AWS_49: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.api_gateway_badbot_cloudwatchrole.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:899-920
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_43
+Check: CKV_AWS_107: "Ensure IAM policies does not allow credentials exposure"
+	PASSED for resource: module.api_gateway_badbot_cloudwatchrole.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:899-920
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-credentials-exposure
+Check: CKV_AWS_109: "Ensure IAM policies does not allow permissions management / resource exposure without constraints"
+	PASSED for resource: module.api_gateway_badbot_cloudwatchrole.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:899-920
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-permissions-management-resource-exposure-without-constraint
+Check: CKV_AWS_283: "Ensure no IAM policies documents allow ALL or any AWS principal permissions to the resource"
+	PASSED for resource: module.api_gateway_badbot_cloudwatchrole.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:899-920
+Check: CKV_AWS_1: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.api_gateway_badbot_cloudwatchrole.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:899-920
+	Guide: https://docs.bridgecrew.io/docs/iam_23
+Check: CKV_AWS_110: "Ensure IAM policies does not allow privilege escalation"
+	PASSED for resource: module.api_gateway_badbot_cloudwatchrole.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:899-920
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-does-not-allow-privilege-escalation
+Check: CKV_AWS_108: "Ensure IAM policies does not allow data exfiltration"
+	PASSED for resource: module.api_gateway_badbot_cloudwatchrole.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:899-920
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-data-exfiltration
+Check: CKV_AWS_111: "Ensure IAM policies does not allow write access without constraints"
+	PASSED for resource: module.api_gateway_badbot_cloudwatchrole.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:899-920
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-write-access-without-constraint
+Check: CKV_AWS_49: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.api_gateway_badbot_cloudwatchrole.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:899-920
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_43
+Check: CKV_AWS_107: "Ensure IAM policies does not allow credentials exposure"
+	PASSED for resource: module.api_gateway_badbot_cloudwatchrole.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:899-920
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-credentials-exposure
+Check: CKV_AWS_109: "Ensure IAM policies does not allow permissions management / resource exposure without constraints"
+	PASSED for resource: module.api_gateway_badbot_cloudwatchrole.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:899-920
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-permissions-management-resource-exposure-without-constraint
+Check: CKV_AWS_283: "Ensure no IAM policies documents allow ALL or any AWS principal permissions to the resource"
+	PASSED for resource: module.api_gateway_badbot_cloudwatchrole.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:899-920
+Check: CKV_AWS_1: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.api_gateway_badbot_cloudwatchrole.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:899-920
+	Guide: https://docs.bridgecrew.io/docs/iam_23
+Check: CKV_AWS_110: "Ensure IAM policies does not allow privilege escalation"
+	PASSED for resource: module.api_gateway_badbot_cloudwatchrole.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:899-920
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-does-not-allow-privilege-escalation
+Check: CKV_AWS_274: "Disallow IAM roles, users, and groups from using the AWS AdministratorAccess policy"
+	PASSED for resource: module.api_gateway_badbot_cloudwatchrole.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/waf_resource/main.tf:899-920
+Check: CKV_AWS_61: "Ensure AWS IAM policy does not allow assume role permission across all services"
+	PASSED for resource: module.api_gateway_badbot_cloudwatchrole.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/waf_resource/main.tf:899-920
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_45
+Check: CKV_AWS_60: "Ensure IAM role allows only specific services or principals to assume it"
+	PASSED for resource: module.api_gateway_badbot_cloudwatchrole.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/waf_resource/main.tf:899-920
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_44
+Check: CKV_AWS_63: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.api_gateway_badbot_cloudwatchrole.aws_iam_role_policy.policy
+	File: /modules/iam/main.tf:58-62
+	Calling File: /modules/waf_resource/main.tf:899-920
+	Guide: https://docs.bridgecrew.io/docs/iam_48
+Check: CKV_AWS_62: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.api_gateway_badbot_cloudwatchrole.aws_iam_role_policy.policy
+	File: /modules/iam/main.tf:58-62
+	Calling File: /modules/waf_resource/main.tf:899-920
+	Guide: https://docs.bridgecrew.io/docs/iam_47
+Check: CKV_AWS_108: "Ensure IAM policies does not allow data exfiltration"
+	PASSED for resource: module.badbot_parser_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:111-156
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-data-exfiltration
+Check: CKV_AWS_111: "Ensure IAM policies does not allow write access without constraints"
+	PASSED for resource: module.badbot_parser_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:111-156
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-write-access-without-constraint
+Check: CKV_AWS_49: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.badbot_parser_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:111-156
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_43
+Check: CKV_AWS_107: "Ensure IAM policies does not allow credentials exposure"
+	PASSED for resource: module.badbot_parser_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:111-156
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-credentials-exposure
+Check: CKV_AWS_109: "Ensure IAM policies does not allow permissions management / resource exposure without constraints"
+	PASSED for resource: module.badbot_parser_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:111-156
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-permissions-management-resource-exposure-without-constraint
+Check: CKV_AWS_283: "Ensure no IAM policies documents allow ALL or any AWS principal permissions to the resource"
+	PASSED for resource: module.badbot_parser_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:111-156
+Check: CKV_AWS_1: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.badbot_parser_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:111-156
+	Guide: https://docs.bridgecrew.io/docs/iam_23
+Check: CKV_AWS_110: "Ensure IAM policies does not allow privilege escalation"
+	PASSED for resource: module.badbot_parser_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:111-156
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-does-not-allow-privilege-escalation
+Check: CKV_AWS_108: "Ensure IAM policies does not allow data exfiltration"
+	PASSED for resource: module.badbot_parser_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:111-156
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-data-exfiltration
+Check: CKV_AWS_111: "Ensure IAM policies does not allow write access without constraints"
+	PASSED for resource: module.badbot_parser_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:111-156
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-write-access-without-constraint
+Check: CKV_AWS_49: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.badbot_parser_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:111-156
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_43
+Check: CKV_AWS_107: "Ensure IAM policies does not allow credentials exposure"
+	PASSED for resource: module.badbot_parser_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:111-156
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-credentials-exposure
+Check: CKV_AWS_109: "Ensure IAM policies does not allow permissions management / resource exposure without constraints"
+	PASSED for resource: module.badbot_parser_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:111-156
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-permissions-management-resource-exposure-without-constraint
+Check: CKV_AWS_283: "Ensure no IAM policies documents allow ALL or any AWS principal permissions to the resource"
+	PASSED for resource: module.badbot_parser_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:111-156
+Check: CKV_AWS_1: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.badbot_parser_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:111-156
+	Guide: https://docs.bridgecrew.io/docs/iam_23
+Check: CKV_AWS_110: "Ensure IAM policies does not allow privilege escalation"
+	PASSED for resource: module.badbot_parser_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:111-156
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-does-not-allow-privilege-escalation
+Check: CKV_AWS_274: "Disallow IAM roles, users, and groups from using the AWS AdministratorAccess policy"
+	PASSED for resource: module.badbot_parser_iam_role.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/waf_resource/main.tf:111-156
+Check: CKV_AWS_61: "Ensure AWS IAM policy does not allow assume role permission across all services"
+	PASSED for resource: module.badbot_parser_iam_role.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/waf_resource/main.tf:111-156
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_45
+Check: CKV_AWS_60: "Ensure IAM role allows only specific services or principals to assume it"
+	PASSED for resource: module.badbot_parser_iam_role.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/waf_resource/main.tf:111-156
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_44
+Check: CKV_AWS_63: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.badbot_parser_iam_role.aws_iam_role_policy.policy
+	File: /modules/iam/main.tf:58-62
+	Calling File: /modules/waf_resource/main.tf:111-156
+	Guide: https://docs.bridgecrew.io/docs/iam_48
+Check: CKV_AWS_62: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.badbot_parser_iam_role.aws_iam_role_policy.policy
+	File: /modules/iam/main.tf:58-62
+	Calling File: /modules/waf_resource/main.tf:111-156
+	Guide: https://docs.bridgecrew.io/docs/iam_47
+Check: CKV_AWS_108: "Ensure IAM policies does not allow data exfiltration"
+	PASSED for resource: module.custom_resource_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:252-364
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-data-exfiltration
+Check: CKV_AWS_111: "Ensure IAM policies does not allow write access without constraints"
+	PASSED for resource: module.custom_resource_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:252-364
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-write-access-without-constraint
+Check: CKV_AWS_49: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.custom_resource_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:252-364
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_43
+Check: CKV_AWS_107: "Ensure IAM policies does not allow credentials exposure"
+	PASSED for resource: module.custom_resource_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:252-364
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-credentials-exposure
+Check: CKV_AWS_109: "Ensure IAM policies does not allow permissions management / resource exposure without constraints"
+	PASSED for resource: module.custom_resource_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:252-364
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-permissions-management-resource-exposure-without-constraint
+Check: CKV_AWS_283: "Ensure no IAM policies documents allow ALL or any AWS principal permissions to the resource"
+	PASSED for resource: module.custom_resource_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:252-364
+Check: CKV_AWS_1: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.custom_resource_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:252-364
+	Guide: https://docs.bridgecrew.io/docs/iam_23
+Check: CKV_AWS_110: "Ensure IAM policies does not allow privilege escalation"
+	PASSED for resource: module.custom_resource_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:252-364
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-does-not-allow-privilege-escalation
+Check: CKV_AWS_108: "Ensure IAM policies does not allow data exfiltration"
+	PASSED for resource: module.custom_resource_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:252-364
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-data-exfiltration
+Check: CKV_AWS_111: "Ensure IAM policies does not allow write access without constraints"
+	PASSED for resource: module.custom_resource_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:252-364
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-write-access-without-constraint
+Check: CKV_AWS_49: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.custom_resource_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:252-364
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_43
+Check: CKV_AWS_107: "Ensure IAM policies does not allow credentials exposure"
+	PASSED for resource: module.custom_resource_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:252-364
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-credentials-exposure
+Check: CKV_AWS_109: "Ensure IAM policies does not allow permissions management / resource exposure without constraints"
+	PASSED for resource: module.custom_resource_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:252-364
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-permissions-management-resource-exposure-without-constraint
+Check: CKV_AWS_283: "Ensure no IAM policies documents allow ALL or any AWS principal permissions to the resource"
+	PASSED for resource: module.custom_resource_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:252-364
+Check: CKV_AWS_1: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.custom_resource_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:252-364
+	Guide: https://docs.bridgecrew.io/docs/iam_23
+Check: CKV_AWS_110: "Ensure IAM policies does not allow privilege escalation"
+	PASSED for resource: module.custom_resource_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:252-364
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-does-not-allow-privilege-escalation
+Check: CKV_AWS_274: "Disallow IAM roles, users, and groups from using the AWS AdministratorAccess policy"
+	PASSED for resource: module.custom_resource_iam_role.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/waf_resource/main.tf:252-364
+Check: CKV_AWS_61: "Ensure AWS IAM policy does not allow assume role permission across all services"
+	PASSED for resource: module.custom_resource_iam_role.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/waf_resource/main.tf:252-364
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_45
+Check: CKV_AWS_60: "Ensure IAM role allows only specific services or principals to assume it"
+	PASSED for resource: module.custom_resource_iam_role.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/waf_resource/main.tf:252-364
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_44
+Check: CKV_AWS_63: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.custom_resource_iam_role.aws_iam_role_policy.policy
+	File: /modules/iam/main.tf:58-62
+	Calling File: /modules/waf_resource/main.tf:252-364
+	Guide: https://docs.bridgecrew.io/docs/iam_48
+Check: CKV_AWS_62: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.custom_resource_iam_role.aws_iam_role_policy.policy
+	File: /modules/iam/main.tf:58-62
+	Calling File: /modules/waf_resource/main.tf:252-364
+	Guide: https://docs.bridgecrew.io/docs/iam_47
+Check: CKV_AWS_108: "Ensure IAM policies does not allow data exfiltration"
+	PASSED for resource: module.custom_timer_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:497-535
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-data-exfiltration
+Check: CKV_AWS_111: "Ensure IAM policies does not allow write access without constraints"
+	PASSED for resource: module.custom_timer_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:497-535
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-write-access-without-constraint
+Check: CKV_AWS_49: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.custom_timer_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:497-535
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_43
+Check: CKV_AWS_107: "Ensure IAM policies does not allow credentials exposure"
+	PASSED for resource: module.custom_timer_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:497-535
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-credentials-exposure
+Check: CKV_AWS_109: "Ensure IAM policies does not allow permissions management / resource exposure without constraints"
+	PASSED for resource: module.custom_timer_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:497-535
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-permissions-management-resource-exposure-without-constraint
+Check: CKV_AWS_283: "Ensure no IAM policies documents allow ALL or any AWS principal permissions to the resource"
+	PASSED for resource: module.custom_timer_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:497-535
+Check: CKV_AWS_1: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.custom_timer_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:497-535
+	Guide: https://docs.bridgecrew.io/docs/iam_23
+Check: CKV_AWS_110: "Ensure IAM policies does not allow privilege escalation"
+	PASSED for resource: module.custom_timer_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:497-535
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-does-not-allow-privilege-escalation
+Check: CKV_AWS_108: "Ensure IAM policies does not allow data exfiltration"
+	PASSED for resource: module.custom_timer_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:497-535
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-data-exfiltration
+Check: CKV_AWS_111: "Ensure IAM policies does not allow write access without constraints"
+	PASSED for resource: module.custom_timer_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:497-535
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-write-access-without-constraint
+Check: CKV_AWS_49: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.custom_timer_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:497-535
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_43
+Check: CKV_AWS_107: "Ensure IAM policies does not allow credentials exposure"
+	PASSED for resource: module.custom_timer_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:497-535
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-credentials-exposure
+Check: CKV_AWS_109: "Ensure IAM policies does not allow permissions management / resource exposure without constraints"
+	PASSED for resource: module.custom_timer_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:497-535
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-permissions-management-resource-exposure-without-constraint
+Check: CKV_AWS_283: "Ensure no IAM policies documents allow ALL or any AWS principal permissions to the resource"
+	PASSED for resource: module.custom_timer_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:497-535
+Check: CKV_AWS_1: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.custom_timer_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:497-535
+	Guide: https://docs.bridgecrew.io/docs/iam_23
+Check: CKV_AWS_110: "Ensure IAM policies does not allow privilege escalation"
+	PASSED for resource: module.custom_timer_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:497-535
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-does-not-allow-privilege-escalation
+Check: CKV_AWS_274: "Disallow IAM roles, users, and groups from using the AWS AdministratorAccess policy"
+	PASSED for resource: module.custom_timer_iam_role.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/waf_resource/main.tf:497-535
+Check: CKV_AWS_61: "Ensure AWS IAM policy does not allow assume role permission across all services"
+	PASSED for resource: module.custom_timer_iam_role.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/waf_resource/main.tf:497-535
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_45
+Check: CKV_AWS_60: "Ensure IAM role allows only specific services or principals to assume it"
+	PASSED for resource: module.custom_timer_iam_role.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/waf_resource/main.tf:497-535
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_44
+Check: CKV_AWS_63: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.custom_timer_iam_role.aws_iam_role_policy.policy
+	File: /modules/iam/main.tf:58-62
+	Calling File: /modules/waf_resource/main.tf:497-535
+	Guide: https://docs.bridgecrew.io/docs/iam_48
+Check: CKV_AWS_62: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.custom_timer_iam_role.aws_iam_role_policy.policy
+	File: /modules/iam/main.tf:58-62
+	Calling File: /modules/waf_resource/main.tf:497-535
+	Guide: https://docs.bridgecrew.io/docs/iam_47
+Check: CKV_AWS_108: "Ensure IAM policies does not allow data exfiltration"
+	PASSED for resource: module.helper_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:63-107
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-data-exfiltration
+Check: CKV_AWS_111: "Ensure IAM policies does not allow write access without constraints"
+	PASSED for resource: module.helper_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:63-107
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-write-access-without-constraint
+Check: CKV_AWS_49: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.helper_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:63-107
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_43
+Check: CKV_AWS_107: "Ensure IAM policies does not allow credentials exposure"
+	PASSED for resource: module.helper_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:63-107
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-credentials-exposure
+Check: CKV_AWS_109: "Ensure IAM policies does not allow permissions management / resource exposure without constraints"
+	PASSED for resource: module.helper_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:63-107
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-permissions-management-resource-exposure-without-constraint
+Check: CKV_AWS_283: "Ensure no IAM policies documents allow ALL or any AWS principal permissions to the resource"
+	PASSED for resource: module.helper_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:63-107
+Check: CKV_AWS_1: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.helper_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:63-107
+	Guide: https://docs.bridgecrew.io/docs/iam_23
+Check: CKV_AWS_110: "Ensure IAM policies does not allow privilege escalation"
+	PASSED for resource: module.helper_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:63-107
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-does-not-allow-privilege-escalation
+Check: CKV_AWS_108: "Ensure IAM policies does not allow data exfiltration"
+	PASSED for resource: module.helper_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:63-107
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-data-exfiltration
+Check: CKV_AWS_111: "Ensure IAM policies does not allow write access without constraints"
+	PASSED for resource: module.helper_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:63-107
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-write-access-without-constraint
+Check: CKV_AWS_49: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.helper_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:63-107
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_43
+Check: CKV_AWS_107: "Ensure IAM policies does not allow credentials exposure"
+	PASSED for resource: module.helper_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:63-107
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-credentials-exposure
+Check: CKV_AWS_109: "Ensure IAM policies does not allow permissions management / resource exposure without constraints"
+	PASSED for resource: module.helper_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:63-107
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-permissions-management-resource-exposure-without-constraint
+Check: CKV_AWS_283: "Ensure no IAM policies documents allow ALL or any AWS principal permissions to the resource"
+	PASSED for resource: module.helper_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:63-107
+Check: CKV_AWS_1: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.helper_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:63-107
+	Guide: https://docs.bridgecrew.io/docs/iam_23
+Check: CKV_AWS_110: "Ensure IAM policies does not allow privilege escalation"
+	PASSED for resource: module.helper_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:63-107
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-does-not-allow-privilege-escalation
+Check: CKV_AWS_274: "Disallow IAM roles, users, and groups from using the AWS AdministratorAccess policy"
+	PASSED for resource: module.helper_iam_role.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/waf_resource/main.tf:63-107
+Check: CKV_AWS_61: "Ensure AWS IAM policy does not allow assume role permission across all services"
+	PASSED for resource: module.helper_iam_role.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/waf_resource/main.tf:63-107
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_45
+Check: CKV_AWS_60: "Ensure IAM role allows only specific services or principals to assume it"
+	PASSED for resource: module.helper_iam_role.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/waf_resource/main.tf:63-107
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_44
+Check: CKV_AWS_63: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.helper_iam_role.aws_iam_role_policy.policy
+	File: /modules/iam/main.tf:58-62
+	Calling File: /modules/waf_resource/main.tf:63-107
+	Guide: https://docs.bridgecrew.io/docs/iam_48
+Check: CKV_AWS_62: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.helper_iam_role.aws_iam_role_policy.policy
+	File: /modules/iam/main.tf:58-62
+	Calling File: /modules/waf_resource/main.tf:63-107
+	Guide: https://docs.bridgecrew.io/docs/iam_47
+Check: CKV_AWS_108: "Ensure IAM policies does not allow data exfiltration"
+	PASSED for resource: module.lambda_role_partition_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:160-199
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-data-exfiltration
+Check: CKV_AWS_111: "Ensure IAM policies does not allow write access without constraints"
+	PASSED for resource: module.lambda_role_partition_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:160-199
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-write-access-without-constraint
+Check: CKV_AWS_49: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.lambda_role_partition_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:160-199
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_43
+Check: CKV_AWS_107: "Ensure IAM policies does not allow credentials exposure"
+	PASSED for resource: module.lambda_role_partition_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:160-199
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-credentials-exposure
+Check: CKV_AWS_109: "Ensure IAM policies does not allow permissions management / resource exposure without constraints"
+	PASSED for resource: module.lambda_role_partition_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:160-199
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-permissions-management-resource-exposure-without-constraint
+Check: CKV_AWS_283: "Ensure no IAM policies documents allow ALL or any AWS principal permissions to the resource"
+	PASSED for resource: module.lambda_role_partition_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:160-199
+Check: CKV_AWS_1: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.lambda_role_partition_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:160-199
+	Guide: https://docs.bridgecrew.io/docs/iam_23
+Check: CKV_AWS_110: "Ensure IAM policies does not allow privilege escalation"
+	PASSED for resource: module.lambda_role_partition_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:160-199
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-does-not-allow-privilege-escalation
+Check: CKV_AWS_108: "Ensure IAM policies does not allow data exfiltration"
+	PASSED for resource: module.lambda_role_partition_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:160-199
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-data-exfiltration
+Check: CKV_AWS_111: "Ensure IAM policies does not allow write access without constraints"
+	PASSED for resource: module.lambda_role_partition_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:160-199
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-write-access-without-constraint
+Check: CKV_AWS_49: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.lambda_role_partition_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:160-199
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_43
+Check: CKV_AWS_107: "Ensure IAM policies does not allow credentials exposure"
+	PASSED for resource: module.lambda_role_partition_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:160-199
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-credentials-exposure
+Check: CKV_AWS_109: "Ensure IAM policies does not allow permissions management / resource exposure without constraints"
+	PASSED for resource: module.lambda_role_partition_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:160-199
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-permissions-management-resource-exposure-without-constraint
+Check: CKV_AWS_283: "Ensure no IAM policies documents allow ALL or any AWS principal permissions to the resource"
+	PASSED for resource: module.lambda_role_partition_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:160-199
+Check: CKV_AWS_1: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.lambda_role_partition_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:160-199
+	Guide: https://docs.bridgecrew.io/docs/iam_23
+Check: CKV_AWS_110: "Ensure IAM policies does not allow privilege escalation"
+	PASSED for resource: module.lambda_role_partition_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:160-199
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-does-not-allow-privilege-escalation
+Check: CKV_AWS_274: "Disallow IAM roles, users, and groups from using the AWS AdministratorAccess policy"
+	PASSED for resource: module.lambda_role_partition_iam_role.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/waf_resource/main.tf:160-199
+Check: CKV_AWS_61: "Ensure AWS IAM policy does not allow assume role permission across all services"
+	PASSED for resource: module.lambda_role_partition_iam_role.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/waf_resource/main.tf:160-199
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_45
+Check: CKV_AWS_60: "Ensure IAM role allows only specific services or principals to assume it"
+	PASSED for resource: module.lambda_role_partition_iam_role.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/waf_resource/main.tf:160-199
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_44
+Check: CKV_AWS_63: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.lambda_role_partition_iam_role.aws_iam_role_policy.policy
+	File: /modules/iam/main.tf:58-62
+	Calling File: /modules/waf_resource/main.tf:160-199
+	Guide: https://docs.bridgecrew.io/docs/iam_48
+Check: CKV_AWS_62: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.lambda_role_partition_iam_role.aws_iam_role_policy.policy
+	File: /modules/iam/main.tf:58-62
+	Calling File: /modules/waf_resource/main.tf:160-199
+	Guide: https://docs.bridgecrew.io/docs/iam_47
+Check: CKV_AWS_108: "Ensure IAM policies does not allow data exfiltration"
+	PASSED for resource: module.log_parser_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:369-492
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-data-exfiltration
+Check: CKV_AWS_111: "Ensure IAM policies does not allow write access without constraints"
+	PASSED for resource: module.log_parser_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:369-492
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-write-access-without-constraint
+Check: CKV_AWS_49: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.log_parser_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:369-492
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_43
+Check: CKV_AWS_107: "Ensure IAM policies does not allow credentials exposure"
+	PASSED for resource: module.log_parser_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:369-492
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-credentials-exposure
+Check: CKV_AWS_109: "Ensure IAM policies does not allow permissions management / resource exposure without constraints"
+	PASSED for resource: module.log_parser_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:369-492
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-permissions-management-resource-exposure-without-constraint
+Check: CKV_AWS_283: "Ensure no IAM policies documents allow ALL or any AWS principal permissions to the resource"
+	PASSED for resource: module.log_parser_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:369-492
+Check: CKV_AWS_1: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.log_parser_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:369-492
+	Guide: https://docs.bridgecrew.io/docs/iam_23
+Check: CKV_AWS_110: "Ensure IAM policies does not allow privilege escalation"
+	PASSED for resource: module.log_parser_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:369-492
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-does-not-allow-privilege-escalation
+Check: CKV_AWS_108: "Ensure IAM policies does not allow data exfiltration"
+	PASSED for resource: module.log_parser_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:369-492
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-data-exfiltration
+Check: CKV_AWS_111: "Ensure IAM policies does not allow write access without constraints"
+	PASSED for resource: module.log_parser_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:369-492
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-write-access-without-constraint
+Check: CKV_AWS_49: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.log_parser_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:369-492
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_43
+Check: CKV_AWS_107: "Ensure IAM policies does not allow credentials exposure"
+	PASSED for resource: module.log_parser_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:369-492
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-credentials-exposure
+Check: CKV_AWS_109: "Ensure IAM policies does not allow permissions management / resource exposure without constraints"
+	PASSED for resource: module.log_parser_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:369-492
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-permissions-management-resource-exposure-without-constraint
+Check: CKV_AWS_283: "Ensure no IAM policies documents allow ALL or any AWS principal permissions to the resource"
+	PASSED for resource: module.log_parser_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:369-492
+Check: CKV_AWS_1: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.log_parser_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:369-492
+	Guide: https://docs.bridgecrew.io/docs/iam_23
+Check: CKV_AWS_110: "Ensure IAM policies does not allow privilege escalation"
+	PASSED for resource: module.log_parser_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:369-492
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-does-not-allow-privilege-escalation
+Check: CKV_AWS_274: "Disallow IAM roles, users, and groups from using the AWS AdministratorAccess policy"
+	PASSED for resource: module.log_parser_iam_role.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/waf_resource/main.tf:369-492
+Check: CKV_AWS_61: "Ensure AWS IAM policy does not allow assume role permission across all services"
+	PASSED for resource: module.log_parser_iam_role.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/waf_resource/main.tf:369-492
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_45
+Check: CKV_AWS_60: "Ensure IAM role allows only specific services or principals to assume it"
+	PASSED for resource: module.log_parser_iam_role.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/waf_resource/main.tf:369-492
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_44
+Check: CKV_AWS_63: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.log_parser_iam_role.aws_iam_role_policy.policy
+	File: /modules/iam/main.tf:58-62
+	Calling File: /modules/waf_resource/main.tf:369-492
+	Guide: https://docs.bridgecrew.io/docs/iam_48
+Check: CKV_AWS_62: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.log_parser_iam_role.aws_iam_role_policy.policy
+	File: /modules/iam/main.tf:58-62
+	Calling File: /modules/waf_resource/main.tf:369-492
+	Guide: https://docs.bridgecrew.io/docs/iam_47
+Check: CKV_AWS_108: "Ensure IAM policies does not allow data exfiltration"
+	PASSED for resource: module.reputation_lists_parser_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:203-248
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-data-exfiltration
+Check: CKV_AWS_111: "Ensure IAM policies does not allow write access without constraints"
+	PASSED for resource: module.reputation_lists_parser_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:203-248
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-write-access-without-constraint
+Check: CKV_AWS_49: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.reputation_lists_parser_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:203-248
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_43
+Check: CKV_AWS_107: "Ensure IAM policies does not allow credentials exposure"
+	PASSED for resource: module.reputation_lists_parser_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:203-248
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-credentials-exposure
+Check: CKV_AWS_109: "Ensure IAM policies does not allow permissions management / resource exposure without constraints"
+	PASSED for resource: module.reputation_lists_parser_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:203-248
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-permissions-management-resource-exposure-without-constraint
+Check: CKV_AWS_283: "Ensure no IAM policies documents allow ALL or any AWS principal permissions to the resource"
+	PASSED for resource: module.reputation_lists_parser_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:203-248
+Check: CKV_AWS_1: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.reputation_lists_parser_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:203-248
+	Guide: https://docs.bridgecrew.io/docs/iam_23
+Check: CKV_AWS_110: "Ensure IAM policies does not allow privilege escalation"
+	PASSED for resource: module.reputation_lists_parser_iam_role.aws_iam_policy_document.assume_role_policy
+	File: /modules/iam/main.tf:6-30
+	Calling File: /modules/waf_resource/main.tf:203-248
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-does-not-allow-privilege-escalation
+Check: CKV_AWS_108: "Ensure IAM policies does not allow data exfiltration"
+	PASSED for resource: module.reputation_lists_parser_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:203-248
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-data-exfiltration
+Check: CKV_AWS_111: "Ensure IAM policies does not allow write access without constraints"
+	PASSED for resource: module.reputation_lists_parser_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:203-248
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-write-access-without-constraint
+Check: CKV_AWS_49: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.reputation_lists_parser_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:203-248
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_43
+Check: CKV_AWS_107: "Ensure IAM policies does not allow credentials exposure"
+	PASSED for resource: module.reputation_lists_parser_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:203-248
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-credentials-exposure
+Check: CKV_AWS_109: "Ensure IAM policies does not allow permissions management / resource exposure without constraints"
+	PASSED for resource: module.reputation_lists_parser_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:203-248
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-permissions-management-resource-exposure-without-constraint
+Check: CKV_AWS_283: "Ensure no IAM policies documents allow ALL or any AWS principal permissions to the resource"
+	PASSED for resource: module.reputation_lists_parser_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:203-248
+Check: CKV_AWS_1: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.reputation_lists_parser_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:203-248
+	Guide: https://docs.bridgecrew.io/docs/iam_23
+Check: CKV_AWS_110: "Ensure IAM policies does not allow privilege escalation"
+	PASSED for resource: module.reputation_lists_parser_iam_role.aws_iam_policy_document.policy
+	File: /modules/iam/main.tf:32-56
+	Calling File: /modules/waf_resource/main.tf:203-248
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-does-not-allow-privilege-escalation
+Check: CKV_AWS_274: "Disallow IAM roles, users, and groups from using the AWS AdministratorAccess policy"
+	PASSED for resource: module.reputation_lists_parser_iam_role.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/waf_resource/main.tf:203-248
+Check: CKV_AWS_61: "Ensure AWS IAM policy does not allow assume role permission across all services"
+	PASSED for resource: module.reputation_lists_parser_iam_role.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/waf_resource/main.tf:203-248
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_45
+Check: CKV_AWS_60: "Ensure IAM role allows only specific services or principals to assume it"
+	PASSED for resource: module.reputation_lists_parser_iam_role.aws_iam_role.role
+	File: /modules/iam/main.tf:1-4
+	Calling File: /modules/waf_resource/main.tf:203-248
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_44
+Check: CKV_AWS_63: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.reputation_lists_parser_iam_role.aws_iam_role_policy.policy
+	File: /modules/iam/main.tf:58-62
+	Calling File: /modules/waf_resource/main.tf:203-248
+	Guide: https://docs.bridgecrew.io/docs/iam_48
+Check: CKV_AWS_62: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.reputation_lists_parser_iam_role.aws_iam_role_policy.policy
+	File: /modules/iam/main.tf:58-62
+	Calling File: /modules/waf_resource/main.tf:203-248
+	Guide: https://docs.bridgecrew.io/docs/iam_47
+Check: CKV_AWS_227: "Ensure KMS key is enabled"
+	PASSED for resource: module.waf_key.aws_kms_key.this
+	File: /modules/kms/main.tf:5-55
+	Calling File: /main.tf:10-14
+	Guide: https://docs.bridgecrew.io/docs/ensure-aws-key-management-service-kms-key-is-enabled
+Check: CKV_AWS_33: "Ensure KMS key policy does not contain wildcard (*) principal"
+	PASSED for resource: module.waf_key.aws_kms_key.this
+	File: /modules/kms/main.tf:5-55
+	Calling File: /main.tf:10-14
+	Guide: https://docs.bridgecrew.io/docs/ensure-kms-key-policy-does-not-contain-wildcard-principal
+Check: CKV_AWS_7: "Ensure rotation for customer created CMKs is enabled"
+	PASSED for resource: module.waf_key.aws_kms_key.this
+	File: /modules/kms/main.tf:5-55
+	Calling File: /main.tf:10-14
+	Guide: https://docs.bridgecrew.io/docs/logging_8
+Check: CKV_AWS_50: "X-ray tracing is enabled for Lambda"
+	PASSED for resource: module.add_athena_partitions_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/firehose_athena_source/main.tf:111-132
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_serverless_4
+Check: CKV_AWS_173: "Check encryption settings for Lambda environmental variable"
+	PASSED for resource: module.add_athena_partitions_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/firehose_athena_source/main.tf:111-132
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_serverless_5
+Check: CKV_AWS_45: "Ensure no hard-coded secrets exist in lambda environment"
+	PASSED for resource: module.add_athena_partitions_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/firehose_athena_source/main.tf:111-132
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_secrets_3
+Check: CKV_AWS_115: "Ensure that AWS Lambda function is configured for function-level concurrent execution limit"
+	PASSED for resource: module.add_athena_partitions_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/firehose_athena_source/main.tf:111-132
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-aws-lambda-function-is-configured-for-function-level-concurrent-execution-limit
+Check: CKV_AWS_50: "X-ray tracing is enabled for Lambda"
+	PASSED for resource: module.remove_expired_ip_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/ip_retention_resource/main.tf:192-219
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_serverless_4
+Check: CKV_AWS_173: "Check encryption settings for Lambda environmental variable"
+	PASSED for resource: module.remove_expired_ip_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/ip_retention_resource/main.tf:192-219
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_serverless_5
+Check: CKV_AWS_45: "Ensure no hard-coded secrets exist in lambda environment"
+	PASSED for resource: module.remove_expired_ip_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/ip_retention_resource/main.tf:192-219
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_secrets_3
+Check: CKV_AWS_115: "Ensure that AWS Lambda function is configured for function-level concurrent execution limit"
+	PASSED for resource: module.remove_expired_ip_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/ip_retention_resource/main.tf:192-219
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-aws-lambda-function-is-configured-for-function-level-concurrent-execution-limit
+Check: CKV_AWS_50: "X-ray tracing is enabled for Lambda"
+	PASSED for resource: module.set_ip_retention_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/ip_retention_resource/main.tf:25-52
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_serverless_4
+Check: CKV_AWS_173: "Check encryption settings for Lambda environmental variable"
+	PASSED for resource: module.set_ip_retention_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/ip_retention_resource/main.tf:25-52
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_serverless_5
+Check: CKV_AWS_45: "Ensure no hard-coded secrets exist in lambda environment"
+	PASSED for resource: module.set_ip_retention_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/ip_retention_resource/main.tf:25-52
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_secrets_3
+Check: CKV_AWS_115: "Ensure that AWS Lambda function is configured for function-level concurrent execution limit"
+	PASSED for resource: module.set_ip_retention_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/ip_retention_resource/main.tf:25-52
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-aws-lambda-function-is-configured-for-function-level-concurrent-execution-limit
+Check: CKV_AWS_50: "X-ray tracing is enabled for Lambda"
+	PASSED for resource: module.badbotparser_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:560-594
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_serverless_4
+Check: CKV_AWS_173: "Check encryption settings for Lambda environmental variable"
+	PASSED for resource: module.badbotparser_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:560-594
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_serverless_5
+Check: CKV_AWS_45: "Ensure no hard-coded secrets exist in lambda environment"
+	PASSED for resource: module.badbotparser_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:560-594
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_secrets_3
+Check: CKV_AWS_115: "Ensure that AWS Lambda function is configured for function-level concurrent execution limit"
+	PASSED for resource: module.badbotparser_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:560-594
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-aws-lambda-function-is-configured-for-function-level-concurrent-execution-limit
+Check: CKV_AWS_50: "X-ray tracing is enabled for Lambda"
+	PASSED for resource: module.custom_resource_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:667-691
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_serverless_4
+Check: CKV_AWS_173: "Check encryption settings for Lambda environmental variable"
+	PASSED for resource: module.custom_resource_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:667-691
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_serverless_5
+Check: CKV_AWS_45: "Ensure no hard-coded secrets exist in lambda environment"
+	PASSED for resource: module.custom_resource_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:667-691
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_secrets_3
+Check: CKV_AWS_115: "Ensure that AWS Lambda function is configured for function-level concurrent execution limit"
+	PASSED for resource: module.custom_resource_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:667-691
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-aws-lambda-function-is-configured-for-function-level-concurrent-execution-limit
+Check: CKV_AWS_50: "X-ray tracing is enabled for Lambda"
+	PASSED for resource: module.custom_timer_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:776-797
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_serverless_4
+Check: CKV_AWS_173: "Check encryption settings for Lambda environmental variable"
+	PASSED for resource: module.custom_timer_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:776-797
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_serverless_5
+Check: CKV_AWS_45: "Ensure no hard-coded secrets exist in lambda environment"
+	PASSED for resource: module.custom_timer_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:776-797
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_secrets_3
+Check: CKV_AWS_115: "Ensure that AWS Lambda function is configured for function-level concurrent execution limit"
+	PASSED for resource: module.custom_timer_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:776-797
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-aws-lambda-function-is-configured-for-function-level-concurrent-execution-limit
+Check: CKV_AWS_50: "X-ray tracing is enabled for Lambda"
+	PASSED for resource: module.helper_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:537-558
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_serverless_4
+Check: CKV_AWS_173: "Check encryption settings for Lambda environmental variable"
+	PASSED for resource: module.helper_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:537-558
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_serverless_5
+Check: CKV_AWS_45: "Ensure no hard-coded secrets exist in lambda environment"
+	PASSED for resource: module.helper_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:537-558
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_secrets_3
+Check: CKV_AWS_115: "Ensure that AWS Lambda function is configured for function-level concurrent execution limit"
+	PASSED for resource: module.helper_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:537-558
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-aws-lambda-function-is-configured-for-function-level-concurrent-execution-limit
+Check: CKV_AWS_50: "X-ray tracing is enabled for Lambda"
+	PASSED for resource: module.log_parser_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:693-738
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_serverless_4
+Check: CKV_AWS_173: "Check encryption settings for Lambda environmental variable"
+	PASSED for resource: module.log_parser_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:693-738
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_serverless_5
+Check: CKV_AWS_45: "Ensure no hard-coded secrets exist in lambda environment"
+	PASSED for resource: module.log_parser_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:693-738
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_secrets_3
+Check: CKV_AWS_115: "Ensure that AWS Lambda function is configured for function-level concurrent execution limit"
+	PASSED for resource: module.log_parser_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:693-738
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-aws-lambda-function-is-configured-for-function-level-concurrent-execution-limit
+Check: CKV_AWS_50: "X-ray tracing is enabled for Lambda"
+	PASSED for resource: module.moves3logsforpartition_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:596-622
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_serverless_4
+Check: CKV_AWS_173: "Check encryption settings for Lambda environmental variable"
+	PASSED for resource: module.moves3logsforpartition_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:596-622
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_serverless_5
+Check: CKV_AWS_45: "Ensure no hard-coded secrets exist in lambda environment"
+	PASSED for resource: module.moves3logsforpartition_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:596-622
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_secrets_3
+Check: CKV_AWS_115: "Ensure that AWS Lambda function is configured for function-level concurrent execution limit"
+	PASSED for resource: module.moves3logsforpartition_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:596-622
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-aws-lambda-function-is-configured-for-function-level-concurrent-execution-limit
+Check: CKV_AWS_301: "Ensure that AWS Lambda function is not publicly accessible"
+	PASSED for resource: module.moves3logsforpartition_aws_lambda_function.aws_lambda_permission.this[0]
+	File: /modules/lambda/main.tf:31-38
+	Calling File: /modules/waf_resource/main.tf:596-622
+Check: CKV_AWS_50: "X-ray tracing is enabled for Lambda"
+	PASSED for resource: module.reputation_lists_parser_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:624-665
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_serverless_4
+Check: CKV_AWS_173: "Check encryption settings for Lambda environmental variable"
+	PASSED for resource: module.reputation_lists_parser_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:624-665
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_serverless_5
+Check: CKV_AWS_45: "Ensure no hard-coded secrets exist in lambda environment"
+	PASSED for resource: module.reputation_lists_parser_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:624-665
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_secrets_3
+Check: CKV_AWS_115: "Ensure that AWS Lambda function is configured for function-level concurrent execution limit"
+	PASSED for resource: module.reputation_lists_parser_aws_lambda_function.aws_lambda_function.lambda[0]
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:624-665
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-aws-lambda-function-is-configured-for-function-level-concurrent-execution-limit
+Check: CKV_AWS_93: "Ensure S3 bucket policy does not lockout all but root user. (Prevent lockouts needing root account fixes)"
+	PASSED for resource: module.s3_access_log_bucket.aws_s3_bucket.this
+	File: /modules/s3/main.tf:7-17
+	Calling File: /modules/waf_resource/main.tf:11-28
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_s3_24
+Check: CKV_AWS_53: "Ensure S3 bucket has block public ACLS enabled"
+	PASSED for resource: module.s3_access_log_bucket.aws_s3_bucket_public_access_block.this
+	File: /modules/s3/main.tf:51-57
+	Calling File: /modules/waf_resource/main.tf:11-28
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_s3_19
+Check: CKV_AWS_54: "Ensure S3 bucket has block public policy enabled"
+	PASSED for resource: module.s3_access_log_bucket.aws_s3_bucket_public_access_block.this
+	File: /modules/s3/main.tf:51-57
+	Calling File: /modules/waf_resource/main.tf:11-28
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_s3_20
+Check: CKV_AWS_55: "Ensure S3 bucket has ignore public ACLs enabled"
+	PASSED for resource: module.s3_access_log_bucket.aws_s3_bucket_public_access_block.this
+	File: /modules/s3/main.tf:51-57
+	Calling File: /modules/waf_resource/main.tf:11-28
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_s3_21
+Check: CKV_AWS_56: "Ensure S3 bucket has 'restrict_public_bucket' enabled"
+	PASSED for resource: module.s3_access_log_bucket.aws_s3_bucket_public_access_block.this
+	File: /modules/s3/main.tf:51-57
+	Calling File: /modules/waf_resource/main.tf:11-28
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_s3_22
+Check: CKV_AWS_70: "Ensure S3 bucket does not allow an action with any Principal"
+	PASSED for resource: module.s3_access_log_bucket.aws_s3_bucket_policy.BucketPolicy
+	File: /modules/s3/main.tf:59-96
+	Calling File: /modules/waf_resource/main.tf:11-28
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_s3_23
+Check: CKV_AWS_93: "Ensure S3 bucket policy does not lockout all but root user. (Prevent lockouts needing root account fixes)"
+	PASSED for resource: module.s3_access_log_bucket.aws_s3_bucket_policy.BucketPolicy
+	File: /modules/s3/main.tf:59-96
+	Calling File: /modules/waf_resource/main.tf:11-28
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_s3_24
+Check: CKV_AWS_108: "Ensure IAM policies does not allow data exfiltration"
+	PASSED for resource: module.waf_sns.aws_iam_policy_document.this
+	File: /modules/sns/main.tf:19-57
+	Calling File: /modules/ip_retention_resource/main.tf:13-23
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-data-exfiltration
+Check: CKV_AWS_111: "Ensure IAM policies does not allow write access without constraints"
+	PASSED for resource: module.waf_sns.aws_iam_policy_document.this
+	File: /modules/sns/main.tf:19-57
+	Calling File: /modules/ip_retention_resource/main.tf:13-23
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-write-access-without-constraint
+Check: CKV_AWS_49: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.waf_sns.aws_iam_policy_document.this
+	File: /modules/sns/main.tf:19-57
+	Calling File: /modules/ip_retention_resource/main.tf:13-23
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_43
+Check: CKV_AWS_107: "Ensure IAM policies does not allow credentials exposure"
+	PASSED for resource: module.waf_sns.aws_iam_policy_document.this
+	File: /modules/sns/main.tf:19-57
+	Calling File: /modules/ip_retention_resource/main.tf:13-23
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-credentials-exposure
+Check: CKV_AWS_109: "Ensure IAM policies does not allow permissions management / resource exposure without constraints"
+	PASSED for resource: module.waf_sns.aws_iam_policy_document.this
+	File: /modules/sns/main.tf:19-57
+	Calling File: /modules/ip_retention_resource/main.tf:13-23
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-do-not-allow-permissions-management-resource-exposure-without-constraint
+Check: CKV_AWS_283: "Ensure no IAM policies documents allow ALL or any AWS principal permissions to the resource"
+	PASSED for resource: module.waf_sns.aws_iam_policy_document.this
+	File: /modules/sns/main.tf:19-57
+	Calling File: /modules/ip_retention_resource/main.tf:13-23
+Check: CKV_AWS_1: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.waf_sns.aws_iam_policy_document.this
+	File: /modules/sns/main.tf:19-57
+	Calling File: /modules/ip_retention_resource/main.tf:13-23
+	Guide: https://docs.bridgecrew.io/docs/iam_23
+Check: CKV_AWS_110: "Ensure IAM policies does not allow privilege escalation"
+	PASSED for resource: module.waf_sns.aws_iam_policy_document.this
+	File: /modules/sns/main.tf:19-57
+	Calling File: /modules/ip_retention_resource/main.tf:13-23
+	Guide: https://docs.bridgecrew.io/docs/ensure-iam-policies-does-not-allow-privilege-escalation
+Check: CKV_AWS_26: "Ensure all data stored in the SNS topic is encrypted"
+	PASSED for resource: module.waf_sns.aws_sns_topic.this
+	File: /modules/sns/main.tf:3-6
+	Calling File: /modules/ip_retention_resource/main.tf:13-23
+	Guide: https://docs.bridgecrew.io/docs/general_15
+Check: CKV_AWS_192: "Ensure WAF prevents message lookup in Log4j2. See CVE-2021-44228 aka log4jshell"
+	PASSED for resource: module.waf_acl.aws_wafv2_web_acl.WafAcl[0]
+	File: /modules/waf/main.tf:1-437
+	Calling File: /modules/waf_resource/main.tf:34-55
+	Guide: https://docs.bridgecrew.io/docs/ensure-waf-prevents-message-lookup-in-log4j2
+Check: CKV_AWS_175: "Ensure WAF has associated rules"
+	PASSED for resource: module.waf_acl.aws_wafv2_web_acl.WafAcl[0]
+	File: /modules/waf/main.tf:1-437
+	Calling File: /modules/waf_resource/main.tf:34-55
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_networking_64
+Check: CKV_AWS_342: "Ensure WAF rule has any actions"
+	PASSED for resource: module.waf_acl.aws_wafv2_web_acl.WafAcl[0]
+	File: /modules/waf/main.tf:1-437
+	Calling File: /modules/waf_resource/main.tf:34-55
+Check: CKV_AWS_41: "Ensure no hard coded AWS access key and secret key exists in provider"
+	PASSED for resource: aws.default
+	File: /provider.tf:11-13
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_secrets_5
+Check: CKV_AWS_124: "Ensure that CloudFormation stacks are sending event notifications to an SNS topic"
+	SKIPPED for resource: aws_cloudformation_stack.trigger_codebuild_stack
+	Suppress comment:  "Ensure that CloudFormation stacks are sending event notifications to an SNS topic"
+	File: /main.tf:245-307
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-cloudformation-stacks-are-sending-event-notifications-to-an-sns-topic
+Check: CKV_AWS_59: "Ensure there is no open access to back-end resources through API"
+	SKIPPED for resource: module.api_gateway.aws_api_gateway_method.ApiGatewayBadBotMethodRoot
+	Suppress comment:  "Ensure there is no open access to back-end resources through API"
+	File: /modules/apigateway/main.tf:23-32
+	Calling File: /modules/waf_resource/main.tf:887-897
+	Guide: https://docs.bridgecrew.io/docs/public_6-api-gateway-authorizer-set
+Check: CKV_AWS_59: "Ensure there is no open access to back-end resources through API"
+	SKIPPED for resource: module.api_gateway.aws_api_gateway_method.ApiGatewayBadBotMethod
+	Suppress comment:  "Ensure there is no open access to back-end resources through API"
+	File: /modules/apigateway/main.tf:43-52
+	Calling File: /modules/waf_resource/main.tf:887-897
+	Guide: https://docs.bridgecrew.io/docs/public_6-api-gateway-authorizer-set
+Check: CKV_AWS_338: "Ensure CloudWatch log groups retains logs for at least 1 year"
+	SKIPPED for resource: module.api_gateway.aws_cloudwatch_log_group.ApiGatewayBadBotStageAccessLogGroup
+	Suppress comment:  "Ensure CloudWatch log groups retains logs for at least 1 year"
+	File: /modules/apigateway/main.tf:75-80
+	Calling File: /modules/waf_resource/main.tf:887-897
+Check: CKV_AWS_120: "Ensure API Gateway caching is enabled"
+	SKIPPED for resource: module.api_gateway.aws_api_gateway_stage.Stage
+	Suppress comment:  "Ensure API Gateway caching is enabled"
+	File: /modules/apigateway/main.tf:82-106
+	Calling File: /modules/waf_resource/main.tf:887-897
+	Guide: https://docs.bridgecrew.io/docs/ensure-aws-api-gateway-caching-is-enabled
+Check: CKV_AWS_73: "Ensure API Gateway has X-Ray Tracing enabled"
+	SKIPPED for resource: module.api_gateway.aws_api_gateway_stage.Stage
+	Suppress comment:  "Ensure API Gateway has X-Ray Tracing enabled"
+	File: /modules/apigateway/main.tf:82-106
+	Calling File: /modules/waf_resource/main.tf:887-897
+	Guide: https://docs.bridgecrew.io/docs/logging_15
+Check: CKV_AWS_117: "Ensure that AWS Lambda function is configured inside a VPC"
+	SKIPPED for resource: module.add_athena_partitions_aws_lambda_function.aws_lambda_function.lambda[0]
+	Suppress comment:  "Ensure that AWS Lambda function is configured inside a VPC"
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/firehose_athena_source/main.tf:111-132
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-aws-lambda-function-is-configured-inside-a-vpc-1
+Check: CKV_AWS_116: "Ensure that AWS Lambda function is configured for a Dead Letter Queue(DLQ)"
+	SKIPPED for resource: module.add_athena_partitions_aws_lambda_function.aws_lambda_function.lambda[0]
+	Suppress comment:  "Ensure that AWS Lambda function is configured for a Dead Letter Queue(DLQ)"
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/firehose_athena_source/main.tf:111-132
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-aws-lambda-function-is-configured-for-a-dead-letter-queue-dlq
+Check: CKV_AWS_272: "Ensure AWS Lambda function is configured to validate code-signing"
+	SKIPPED for resource: module.add_athena_partitions_aws_lambda_function.aws_lambda_function.lambda[0]
+	Suppress comment:  "Ensure AWS Lambda function is configured to validate code-signing"
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/firehose_athena_source/main.tf:111-132
+Check: CKV_AWS_117: "Ensure that AWS Lambda function is configured inside a VPC"
+	SKIPPED for resource: module.remove_expired_ip_aws_lambda_function.aws_lambda_function.lambda[0]
+	Suppress comment:  "Ensure that AWS Lambda function is configured inside a VPC"
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/ip_retention_resource/main.tf:192-219
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-aws-lambda-function-is-configured-inside-a-vpc-1
+Check: CKV_AWS_116: "Ensure that AWS Lambda function is configured for a Dead Letter Queue(DLQ)"
+	SKIPPED for resource: module.remove_expired_ip_aws_lambda_function.aws_lambda_function.lambda[0]
+	Suppress comment:  "Ensure that AWS Lambda function is configured for a Dead Letter Queue(DLQ)"
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/ip_retention_resource/main.tf:192-219
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-aws-lambda-function-is-configured-for-a-dead-letter-queue-dlq
+Check: CKV_AWS_272: "Ensure AWS Lambda function is configured to validate code-signing"
+	SKIPPED for resource: module.remove_expired_ip_aws_lambda_function.aws_lambda_function.lambda[0]
+	Suppress comment:  "Ensure AWS Lambda function is configured to validate code-signing"
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/ip_retention_resource/main.tf:192-219
+Check: CKV_AWS_117: "Ensure that AWS Lambda function is configured inside a VPC"
+	SKIPPED for resource: module.set_ip_retention_aws_lambda_function.aws_lambda_function.lambda[0]
+	Suppress comment:  "Ensure that AWS Lambda function is configured inside a VPC"
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/ip_retention_resource/main.tf:25-52
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-aws-lambda-function-is-configured-inside-a-vpc-1
+Check: CKV_AWS_116: "Ensure that AWS Lambda function is configured for a Dead Letter Queue(DLQ)"
+	SKIPPED for resource: module.set_ip_retention_aws_lambda_function.aws_lambda_function.lambda[0]
+	Suppress comment:  "Ensure that AWS Lambda function is configured for a Dead Letter Queue(DLQ)"
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/ip_retention_resource/main.tf:25-52
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-aws-lambda-function-is-configured-for-a-dead-letter-queue-dlq
+Check: CKV_AWS_272: "Ensure AWS Lambda function is configured to validate code-signing"
+	SKIPPED for resource: module.set_ip_retention_aws_lambda_function.aws_lambda_function.lambda[0]
+	Suppress comment:  "Ensure AWS Lambda function is configured to validate code-signing"
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/ip_retention_resource/main.tf:25-52
+Check: CKV_AWS_117: "Ensure that AWS Lambda function is configured inside a VPC"
+	SKIPPED for resource: module.badbotparser_aws_lambda_function.aws_lambda_function.lambda[0]
+	Suppress comment:  "Ensure that AWS Lambda function is configured inside a VPC"
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:560-594
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-aws-lambda-function-is-configured-inside-a-vpc-1
+Check: CKV_AWS_116: "Ensure that AWS Lambda function is configured for a Dead Letter Queue(DLQ)"
+	SKIPPED for resource: module.badbotparser_aws_lambda_function.aws_lambda_function.lambda[0]
+	Suppress comment:  "Ensure that AWS Lambda function is configured for a Dead Letter Queue(DLQ)"
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:560-594
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-aws-lambda-function-is-configured-for-a-dead-letter-queue-dlq
+Check: CKV_AWS_272: "Ensure AWS Lambda function is configured to validate code-signing"
+	SKIPPED for resource: module.badbotparser_aws_lambda_function.aws_lambda_function.lambda[0]
+	Suppress comment:  "Ensure AWS Lambda function is configured to validate code-signing"
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:560-594
+Check: CKV_AWS_117: "Ensure that AWS Lambda function is configured inside a VPC"
+	SKIPPED for resource: module.custom_resource_aws_lambda_function.aws_lambda_function.lambda[0]
+	Suppress comment:  "Ensure that AWS Lambda function is configured inside a VPC"
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:667-691
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-aws-lambda-function-is-configured-inside-a-vpc-1
+Check: CKV_AWS_116: "Ensure that AWS Lambda function is configured for a Dead Letter Queue(DLQ)"
+	SKIPPED for resource: module.custom_resource_aws_lambda_function.aws_lambda_function.lambda[0]
+	Suppress comment:  "Ensure that AWS Lambda function is configured for a Dead Letter Queue(DLQ)"
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:667-691
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-aws-lambda-function-is-configured-for-a-dead-letter-queue-dlq
+Check: CKV_AWS_272: "Ensure AWS Lambda function is configured to validate code-signing"
+	SKIPPED for resource: module.custom_resource_aws_lambda_function.aws_lambda_function.lambda[0]
+	Suppress comment:  "Ensure AWS Lambda function is configured to validate code-signing"
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:667-691
+Check: CKV_AWS_117: "Ensure that AWS Lambda function is configured inside a VPC"
+	SKIPPED for resource: module.custom_timer_aws_lambda_function.aws_lambda_function.lambda[0]
+	Suppress comment:  "Ensure that AWS Lambda function is configured inside a VPC"
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:776-797
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-aws-lambda-function-is-configured-inside-a-vpc-1
+Check: CKV_AWS_116: "Ensure that AWS Lambda function is configured for a Dead Letter Queue(DLQ)"
+	SKIPPED for resource: module.custom_timer_aws_lambda_function.aws_lambda_function.lambda[0]
+	Suppress comment:  "Ensure that AWS Lambda function is configured for a Dead Letter Queue(DLQ)"
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:776-797
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-aws-lambda-function-is-configured-for-a-dead-letter-queue-dlq
+Check: CKV_AWS_272: "Ensure AWS Lambda function is configured to validate code-signing"
+	SKIPPED for resource: module.custom_timer_aws_lambda_function.aws_lambda_function.lambda[0]
+	Suppress comment:  "Ensure AWS Lambda function is configured to validate code-signing"
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:776-797
+Check: CKV_AWS_117: "Ensure that AWS Lambda function is configured inside a VPC"
+	SKIPPED for resource: module.helper_aws_lambda_function.aws_lambda_function.lambda[0]
+	Suppress comment:  "Ensure that AWS Lambda function is configured inside a VPC"
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:537-558
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-aws-lambda-function-is-configured-inside-a-vpc-1
+Check: CKV_AWS_116: "Ensure that AWS Lambda function is configured for a Dead Letter Queue(DLQ)"
+	SKIPPED for resource: module.helper_aws_lambda_function.aws_lambda_function.lambda[0]
+	Suppress comment:  "Ensure that AWS Lambda function is configured for a Dead Letter Queue(DLQ)"
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:537-558
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-aws-lambda-function-is-configured-for-a-dead-letter-queue-dlq
+Check: CKV_AWS_272: "Ensure AWS Lambda function is configured to validate code-signing"
+	SKIPPED for resource: module.helper_aws_lambda_function.aws_lambda_function.lambda[0]
+	Suppress comment:  "Ensure AWS Lambda function is configured to validate code-signing"
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:537-558
+Check: CKV_AWS_117: "Ensure that AWS Lambda function is configured inside a VPC"
+	SKIPPED for resource: module.log_parser_aws_lambda_function.aws_lambda_function.lambda[0]
+	Suppress comment:  "Ensure that AWS Lambda function is configured inside a VPC"
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:693-738
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-aws-lambda-function-is-configured-inside-a-vpc-1
+Check: CKV_AWS_116: "Ensure that AWS Lambda function is configured for a Dead Letter Queue(DLQ)"
+	SKIPPED for resource: module.log_parser_aws_lambda_function.aws_lambda_function.lambda[0]
+	Suppress comment:  "Ensure that AWS Lambda function is configured for a Dead Letter Queue(DLQ)"
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:693-738
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-aws-lambda-function-is-configured-for-a-dead-letter-queue-dlq
+Check: CKV_AWS_272: "Ensure AWS Lambda function is configured to validate code-signing"
+	SKIPPED for resource: module.log_parser_aws_lambda_function.aws_lambda_function.lambda[0]
+	Suppress comment:  "Ensure AWS Lambda function is configured to validate code-signing"
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:693-738
+Check: CKV_AWS_117: "Ensure that AWS Lambda function is configured inside a VPC"
+	SKIPPED for resource: module.moves3logsforpartition_aws_lambda_function.aws_lambda_function.lambda[0]
+	Suppress comment:  "Ensure that AWS Lambda function is configured inside a VPC"
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:596-622
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-aws-lambda-function-is-configured-inside-a-vpc-1
+Check: CKV_AWS_116: "Ensure that AWS Lambda function is configured for a Dead Letter Queue(DLQ)"
+	SKIPPED for resource: module.moves3logsforpartition_aws_lambda_function.aws_lambda_function.lambda[0]
+	Suppress comment:  "Ensure that AWS Lambda function is configured for a Dead Letter Queue(DLQ)"
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:596-622
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-aws-lambda-function-is-configured-for-a-dead-letter-queue-dlq
+Check: CKV_AWS_272: "Ensure AWS Lambda function is configured to validate code-signing"
+	SKIPPED for resource: module.moves3logsforpartition_aws_lambda_function.aws_lambda_function.lambda[0]
+	Suppress comment:  "Ensure AWS Lambda function is configured to validate code-signing"
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:596-622
+Check: CKV_AWS_117: "Ensure that AWS Lambda function is configured inside a VPC"
+	SKIPPED for resource: module.reputation_lists_parser_aws_lambda_function.aws_lambda_function.lambda[0]
+	Suppress comment:  "Ensure that AWS Lambda function is configured inside a VPC"
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:624-665
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-aws-lambda-function-is-configured-inside-a-vpc-1
+Check: CKV_AWS_116: "Ensure that AWS Lambda function is configured for a Dead Letter Queue(DLQ)"
+	SKIPPED for resource: module.reputation_lists_parser_aws_lambda_function.aws_lambda_function.lambda[0]
+	Suppress comment:  "Ensure that AWS Lambda function is configured for a Dead Letter Queue(DLQ)"
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:624-665
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-aws-lambda-function-is-configured-for-a-dead-letter-queue-dlq
+Check: CKV_AWS_272: "Ensure AWS Lambda function is configured to validate code-signing"
+	SKIPPED for resource: module.reputation_lists_parser_aws_lambda_function.aws_lambda_function.lambda[0]
+	Suppress comment:  "Ensure AWS Lambda function is configured to validate code-signing"
+	File: /modules/lambda/main.tf:1-28
+	Calling File: /modules/waf_resource/main.tf:624-665
+Error parsing file /Users/tamilver/Documents/source-code-repo/modules-work/terraform-aws-waf-automation/locals.tfֿ
+cloudformation scan results:
+
+Passed checks: 0, Failed checks: 0, Skipped checks: 0, Parsing errors: 1
+
+Error parsing file ./templates/custom-resource.jsonֿ
+

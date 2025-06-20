@@ -1,0 +1,482 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description" : "(SO0006-tf)Terraform - Security Automations for AWS WAF v4.0.0: This AWS CloudFormation template provisions resources associated with custom resource lambda to perform tasks such as building and uploading S3 config files and more",
+  "Parameters" : {
+    "ErrorThreshold" : {
+      "Type" : "Number",
+      "Description" : "IP Set names"
+    },
+    "RequestThresholdByCountryParam" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "HTTPFloodAthenaQueryGroupByParam" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "AthenaQueryRunTimeScheduleParam" : {
+      "Type" : "Number",
+      "Description" : "IP Set names"
+    },
+    "version" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "SNSEmailParam" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "WAFWhitelistSetIPV4" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "WAFBlacklistSetIPV4" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "WAFHttpFloodSetIPV4" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "WAFScannersProbesSetIPV4" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "WAFReputationListsSetIPV4" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "WAFBadBotSetIPV4" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "WAFWhitelistSetIPV6" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "WAFBlacklistSetIPV6" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "WAFHttpFloodSetIPV6" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "WAFScannersProbesSetIPV6" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "RandomId" : {
+      "Type" : "String",
+      "Description" : "random id values"
+    },
+    "WAFReputationListsSetIPV6" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "WAFBadBotSetIPV6" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "WAFWhitelistSetIPV4Name" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "WAFBlacklistSetIPV4Name" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "WAFHttpFloodSetIPV4Name" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "WAFScannersProbesSetIPV4Name" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "WAFReputationListsSetIPV4Name" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "WAFBadBotSetIPV4Name" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "WAFWhitelistSetIPV6Name" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "WAFBlacklistSetIPV6Name" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "WAFHttpFloodSetIPV6Name" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "WAFReputationListsSetIPV6Name" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "WAFScannersProbesSetIPV6Name" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "WAFBlockPeriod" : {
+      "Type" : "Number",
+      "Description" : "Code Build Project Name"
+    },
+    "HttpFloodProtectionRateBasedRuleActivated" : {
+      "Type" : "String",
+      "Description" : "Lambda Function ARN"
+    },
+    "WafLogBucket" : {
+      "Type" : "String",
+      "Description" : "Lambda Function ARN"
+    },
+    "HttpFloodLambdaLogParser" : {
+      "Type" : "String",
+      "Description" : "Lambda Function ARN"
+    },
+    "ScannersProbesLambdaLogParser" : {
+      "Type" : "String",
+      "Description" : "Lambda Function ARN"
+    },
+    "HttpFloodProtectionLogParserActivated" : {
+      "Type" : "String",
+      "Description" : "Lambda Function ARN"
+    },
+    "ScannersProbesProtectionActivated" : {
+      "Type" : "String",
+      "Description" : "Lambda Function ARN"
+    },
+    "BadBotProtectionActivated" : {
+      "Type" : "String",
+      "Description" : "Lambda Function ARN"
+    },
+    "AppAccessLogBucket" : {
+      "Type" : "String",
+      "Description" : "Lambda Function ARN"
+    },
+    "Region" : {
+      "Type" : "String",
+      "Description" : "Lambda Function ARN"
+    },
+    "RequestThreshold" : {
+      "Type" : "Number",
+      "Description" : "Lambda Function ARN"
+    },
+    "ReputationListsProtectionActivated" : {
+      "Type" : "String",
+      "Description" : "Lambda Function ARN"
+    },
+    "IPRetentionPeriodAllowedParam" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "IPRetentionPeriodDeniedParam" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "KeepDataInOriginalS3Location" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "ActivateHttpFloodProtectionParam" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "ActivateAWSManagedRulesParam" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "wafwebacl" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "ActivateAWSManagedAPParam" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "ActivateAWSManagedKBIParam" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "ActivateAWSManagedIPRParam" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "ActivateAWSManagedAIPParam" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "ActivateAWSManagedSQLParam" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "ActivateAWSManagedLinuxParam" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "ActivateAWSManagedPOSIXParam" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "ActivateAWSManagedWindowsParam" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "ActivateAWSManagedPHPParam" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "ActivateAWSManagedWPParam" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "UserDefinedAppAccessLogBucketPrefixParam" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "AppAccessLogBucketLoggingStatusParam" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "ActivateSqlInjectionProtectionParam" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "WAFBadBotSetIPV6Name" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "SendAnonymousUsageData" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "ActivateReputationListsProtectionParam" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "ActivateBadBotProtectionParam" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "ActivateCrossSiteScriptingProtectionParam" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "ActivateScannersProbesProtectionParam" : {
+      "Type" : "String",
+      "Description" : "IP Set names"
+    },
+    "CustomResourcearn" : {
+      "Type" : "String",
+      "Description" : "Lambda Function ARN"
+    }
+  },
+  "Conditions": {
+          "HttpFloodLambdaLogParser": {
+            "Fn::Equals": [
+                {
+                    "Ref": "HttpFloodLambdaLogParser"
+                },
+                "yes"
+            ]
+        },
+          "ScannersProbesLambdaLogParser": {
+            "Fn::Equals": [
+                {
+                    "Ref": "ScannersProbesLambdaLogParser"
+                },
+                "yes"
+            ]
+        },
+        "BadBotProtectionActivated": {
+          "Fn::Equals": [
+              {
+                  "Ref": "BadBotProtectionActivated"
+              },
+              "yes"
+          ]
+      },
+        "ScannersProbesProtectionActivated": {
+          "Fn::Equals": [
+              {
+                  "Ref": "ScannersProbesProtectionActivated"
+              },
+              "yes"
+          ]
+      },
+        "HttpFloodProtectionLogParserActivated": {
+          "Fn::Equals": [
+              {
+                  "Ref": "HttpFloodProtectionLogParserActivated"
+              },
+              "yes"
+          ]
+      },
+        "ReputationListsProtectionActivated": {
+          "Fn::Equals": [
+              {
+                  "Ref": "ReputationListsProtectionActivated"
+              },
+              "yes"
+          ]
+      }
+    },
+  "Resources" : {
+      "GenerateAppLogParserConfFile": {
+        "Type" : "Custom::GenerateAppLogParserConfFile",
+        "Condition" : "ScannersProbesLambdaLogParser",
+        "Properties" : {
+          "ServiceToken" : { "Ref" : "CustomResourcearn" },
+          "AppAccessLogBucket" : { "Ref" : "AppAccessLogBucket" },
+          "StackName" : { "Ref" : "AWS::StackName" },
+          "ErrorThreshold" : { "Ref" : "ErrorThreshold" },
+          "WAFBlockPeriod" : { "Ref" : "WAFBlockPeriod" }
+      }
+    },
+      "GenerateWafLogParserConfFile": {
+        "Type" : "Custom::GenerateWafLogParserConfFile",
+        "Condition" : "HttpFloodLambdaLogParser",
+        "Properties" : {
+          "ServiceToken" : { "Ref" : "CustomResourcearn" },
+          "WafAccessLogBucket" : { "Ref" : "WafLogBucket" },
+          "StackName" : { "Ref" : "AWS::StackName" },
+          "RequestThreshold" : { "Ref" : "RequestThreshold" },
+          "WAFBlockPeriod" : { "Ref" : "WAFBlockPeriod" }
+      }
+    },
+      "ConfigureWebAcl": {
+        "Type" : "Custom::ConfigureWebAcl",
+        "Condition" : "HttpFloodLambdaLogParser",
+        "Properties" : {
+          "ServiceToken" : { "Ref" : "CustomResourcearn" },
+          "Provisioner": "terraform",
+          "ActivateSqlInjectionProtectionParam" : { "Ref" : "ActivateSqlInjectionProtectionParam" },
+          "ActivateCrossSiteScriptingProtectionParam" : { "Ref" : "ActivateCrossSiteScriptingProtectionParam" },
+          "ActivateHttpFloodProtectionParam" : { "Ref" : "ActivateHttpFloodProtectionParam" },
+          "ActivateScannersProbesProtectionParam" : { "Ref" : "ActivateScannersProbesProtectionParam" },
+          "ActivateReputationListsProtectionParam" : { "Ref" : "ActivateReputationListsProtectionParam" },
+          "ActivateBadBotProtectionParam" : { "Ref" : "ActivateBadBotProtectionParam" },
+          "ActivateAWSManagedRulesParam" : { "Ref" : "ActivateAWSManagedRulesParam" },
+          "KeepDataInOriginalS3Location" : { "Ref" : "KeepDataInOriginalS3Location" },
+          "IPRetentionPeriodAllowedParam" : { "Ref" : "IPRetentionPeriodAllowedParam" },
+          "IPRetentionPeriodDeniedParam" : { "Ref" : "IPRetentionPeriodDeniedParam" },
+          "SNSEmailParam" : { "Ref" : "SNSEmailParam" },
+          "WAFWebACL" : { "Ref" : "wafwebacl" },
+          "WAFWhitelistSetIPV4" : { "Ref" : "WAFWhitelistSetIPV4" },
+          "WAFBlacklistSetIPV4" : { "Ref" : "WAFBlacklistSetIPV4" },
+          "WAFHttpFloodSetIPV4" : { "Fn::If" : [
+                                            "HttpFloodProtectionLogParserActivated",
+                                            {"Ref" : "WAFHttpFloodSetIPV4"},
+                                            {"Ref" : "AWS::NoValue"}
+                                          ] },
+          "WAFScannersProbesSetIPV4" : { "Fn::If" : [
+                                            "ScannersProbesProtectionActivated",
+                                            {"Ref" : "WAFScannersProbesSetIPV4"},
+                                            {"Ref" : "AWS::NoValue"}
+                                          ] },
+          "WAFReputationListsSetIPV4" : { "Fn::If" : [
+                                            "ReputationListsProtectionActivated",
+                                            {"Ref" : "WAFReputationListsSetIPV4"},
+                                            {"Ref" : "AWS::NoValue"}
+                                          ] },
+          "WAFBadBotSetIPV4" : { "Fn::If" : [
+                                            "BadBotProtectionActivated",
+                                            {"Ref" : "WAFBadBotSetIPV4"},
+                                            {"Ref" : "AWS::NoValue"}
+                                          ] },
+          "WAFWhitelistSetIPV6" : { "Ref" : "WAFWhitelistSetIPV6" },
+          "WAFBlacklistSetIPV6" : { "Ref" : "WAFBlacklistSetIPV6" },
+          "WAFHttpFloodSetIPV6" : { "Fn::If" : [
+                                            "HttpFloodProtectionLogParserActivated",
+                                            {"Ref" : "WAFHttpFloodSetIPV6"},
+                                            {"Ref" : "AWS::NoValue"}
+                                          ] },
+          "WAFScannersProbesSetIPV6" : { "Fn::If" : [
+                                            "ScannersProbesProtectionActivated",
+                                            {"Ref" : "WAFScannersProbesSetIPV6"},
+                                            {"Ref" : "AWS::NoValue"}
+                                          ] },
+          "WAFReputationListsSetIPV6" : { "Fn::If" : [
+                                            "ReputationListsProtectionActivated",
+                                            {"Ref" : "WAFReputationListsSetIPV6"},
+                                            {"Ref" : "AWS::NoValue"}
+                                          ] },
+          "WAFBadBotSetIPV6" : { "Fn::If" : [
+                                            "BadBotProtectionActivated",
+                                            {"Ref" : "WAFBadBotSetIPV6"},
+                                            {"Ref" : "AWS::NoValue"}
+                                          ] },
+          "WAFWhitelistSetIPV4Name" : { "Ref" : "WAFWhitelistSetIPV4Name" },
+          "WAFBlacklistSetIPV4Name" : { "Ref" : "WAFBlacklistSetIPV4Name" },
+          "WAFHttpFloodSetIPV4Name" : { "Fn::If" : [
+                                            "HttpFloodProtectionLogParserActivated",
+                                            {"Ref" : "WAFHttpFloodSetIPV4Name"},
+                                            {"Ref" : "AWS::NoValue"}
+                                          ] },
+          "WAFScannersProbesSetIPV4Name" : { "Fn::If" : [
+                                            "ScannersProbesProtectionActivated",
+                                            {"Ref" : "WAFScannersProbesSetIPV4Name"},
+                                            {"Ref" : "AWS::NoValue"}
+                                          ] },
+          "WAFReputationListsSetIPV4Name" : { "Fn::If" : [
+                                            "ReputationListsProtectionActivated",
+                                            {"Ref" : "WAFReputationListsSetIPV4Name"},
+                                            {"Ref" : "AWS::NoValue"}
+                                          ] },
+          "WAFBadBotSetIPV4Name" : { "Fn::If" : [
+                                            "BadBotProtectionActivated",
+                                            {"Ref" : "WAFBadBotSetIPV4Name"},
+                                            {"Ref" : "AWS::NoValue"}
+                                          ] },
+          "WAFWhitelistSetIPV6Name" : { "Ref" : "WAFWhitelistSetIPV6Name" },
+          "WAFBlacklistSetIPV6Name" : { "Ref" : "WAFBlacklistSetIPV6Name" },
+          "WAFHttpFloodSetIPV6Name" : { "Fn::If" : [
+                                            "HttpFloodProtectionLogParserActivated",
+                                            {"Ref" : "WAFHttpFloodSetIPV6Name"},
+                                            {"Ref" : "AWS::NoValue"}
+                                          ] },
+          "WAFScannersProbesSetIPV6Name" : { "Fn::If" : [
+                                            "ScannersProbesProtectionActivated",
+                                            {"Ref" : "WAFScannersProbesSetIPV6Name"},
+                                            {"Ref" : "AWS::NoValue"}
+                                          ] },
+          "WAFReputationListsSetIPV6Name" : { "Fn::If" : [
+                                            "ReputationListsProtectionActivated",
+                                            {"Ref" : "WAFReputationListsSetIPV6Name"},
+                                            {"Ref" : "AWS::NoValue"}
+                                          ] },
+          "WAFBadBotSetIPV6Name" : { "Fn::If" : [
+                                            "BadBotProtectionActivated",
+                                            {"Ref" : "WAFBadBotSetIPV6Name"},
+                                            {"Ref" : "AWS::NoValue"}
+                                          ] },
+          "UUID" : { "Ref" : "RandomId" },
+          "Region" : { "Ref" : "Region" },
+          "RequestThreshold" : { "Ref" : "RequestThreshold" },
+          "RequestThresholdByCountryParam" : { "Ref" : "RequestThresholdByCountryParam" },
+          "AthenaQueryRunTimeScheduleParam" : { "Ref" : "AthenaQueryRunTimeScheduleParam" },
+          "ErrorThreshold" : { "Ref" : "ErrorThreshold" },
+          "ActivateAWSManagedAPParam" : { "Ref" : "ActivateAWSManagedAPParam" },
+          "ActivateAWSManagedKBIParam" : { "Ref" : "ActivateAWSManagedKBIParam" },
+          "ActivateAWSManagedIPRParam" : { "Ref" : "ActivateAWSManagedIPRParam" },
+          "ActivateAWSManagedAIPParam" : { "Ref" : "ActivateAWSManagedAIPParam" },
+          "ActivateAWSManagedSQLParam" : { "Ref" : "ActivateAWSManagedSQLParam" },
+          "ActivateAWSManagedLinuxParam" : { "Ref" : "ActivateAWSManagedLinuxParam" },
+          "ActivateAWSManagedPOSIXParam" : { "Ref" : "ActivateAWSManagedPOSIXParam" },
+          "ActivateAWSManagedWindowsParam" : { "Ref" : "ActivateAWSManagedWindowsParam" },
+          "ActivateAWSManagedPHPParam" : { "Ref" : "ActivateAWSManagedPHPParam" },
+          "ActivateAWSManagedWPParam" : { "Ref" : "ActivateAWSManagedWPParam" },
+          "UserDefinedAppAccessLogBucketPrefixParam" : { "Ref" : "UserDefinedAppAccessLogBucketPrefixParam" },
+          "AppAccessLogBucketLoggingStatusParam" : { "Ref" : "AppAccessLogBucketLoggingStatusParam" },
+          "HTTPFloodAthenaQueryGroupByParam" : { "Ref" : "HTTPFloodAthenaQueryGroupByParam" },
+          "WAFBlockPeriod" : { "Ref" : "WAFBlockPeriod" },
+          "Version" : { "Ref" : "version" },
+          "SendAnonymousUsageData" : { "Ref" : "SendAnonymousUsageData" }
+      }
+    }
+  }
+}
