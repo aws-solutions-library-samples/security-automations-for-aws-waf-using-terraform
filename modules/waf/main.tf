@@ -1,4 +1,6 @@
 resource "aws_wafv2_web_acl" "WafAcl" {
+#checkov:skip=CKV_AWS_192: "Ensure WAF prevents message lookup in Log4j2. See CVE-2021-44228 aka log4jshell"
+#checkov:skip=CKV2_AWS_31: "Ensure WAF2 has a Logging Configuration"
   count       = var.create_waf_rule ? 1 : 0
   name        = var.WafAcl_name
   description = "Custom WAFWebACL"
@@ -287,6 +289,7 @@ resource "aws_wafv2_web_acl" "WafAcl" {
     }
   }
 }
+
 
 resource "aws_wafv2_web_acl_logging_configuration" "example" {
   count                   = var.HttpFloodProtectionLogParserActivated == "yes" ? 1 : 0

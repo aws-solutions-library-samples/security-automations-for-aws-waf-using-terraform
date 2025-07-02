@@ -1,5 +1,5 @@
 locals {
-  run_time = "python3.8"
+  run_time = "python3.9"
 }
 
 variable "random_id" {
