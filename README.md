@@ -1,4 +1,4 @@
-# 🛡️ Guidance for Security Automations for AWS WAF 
+# 🛡️ Security Automations for AWS WAF - Terraform
 
 [![License: MIT-0](https://img.shields.io/badge/License-MIT--0-yellow.svg)](https://github.com/aws/mit-0)
 [![Terraform](https://img.shields.io/badge/Terraform-%3E%3D1.0.7-623CE4.svg)](https://terraform.io/)
