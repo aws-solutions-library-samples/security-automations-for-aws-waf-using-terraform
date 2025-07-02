@@ -59,7 +59,7 @@ Before you begin, ensure you have:
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd guidance-for-security-automations-for-aws-waf
+   cd security-automations-for-aws-waf-using-terraform
    ```
 
 2. **Navigate to the basic example**
