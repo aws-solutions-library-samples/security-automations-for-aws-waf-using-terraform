@@ -1,6 +1,6 @@
 locals {
   SNSEmail = var.IPRetentionPeriod == "yes" ? "yes" : "no"
-  run_time = "python3.8"
+  run_time = "python3.9"
 }
 
 variable "SNSEmailParam" {

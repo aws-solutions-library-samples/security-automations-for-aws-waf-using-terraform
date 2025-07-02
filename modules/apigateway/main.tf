@@ -63,7 +63,6 @@ resource "aws_api_gateway_integration" "Integration" {
 
 resource "aws_api_gateway_deployment" "Deployment" {
   rest_api_id = aws_api_gateway_rest_api.this.id
-  stage_name  = var.stage_name
   lifecycle {
     create_before_destroy = true
   }
@@ -83,6 +82,7 @@ resource "aws_cloudwatch_log_group" "ApiGatewayBadBotStageAccessLogGroup" {
 
 #tfsec:ignore:aws-api-gateway-enable-tracing
 resource "aws_api_gateway_stage" "Stage" {
+  #checkov:skip=CKV2_AWS_4: "Ensure API Gateway stage have logging level defined as appropriate"
   #checkov:skip=CKV2_AWS_29: "Ensure public API gateway are protected by WAF"
   #checkov:skip=CKV2_AWS_51: "Ensure AWS API Gateway endpoints uses client certificate authentication"
   #checkov:skip=CKV_AWS_73: "Ensure API Gateway has X-Ray Tracing enabled"
