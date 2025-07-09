@@ -178,7 +178,7 @@ variable "athena_query_run_time_schedule_param" {
 variable "activate_scanners_probes_protection_param" {
   type        = string
   description = "activate_scanners_probes_protection_param"
-  default     = ""
+  default     = "yes - Amazon Athena log parser"
 
   # using contains()
   validation {

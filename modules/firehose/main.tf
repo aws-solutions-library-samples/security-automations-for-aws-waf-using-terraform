@@ -11,7 +11,7 @@ resource "aws_kinesis_firehose_delivery_stream" "FirehoseAthena" {
     compression_format  = "GZIP"
     error_output_prefix = "AWSErrorLogs/result=!{firehose:error-output-type}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/"
     role_arn            = var.firehouseathena_rolearn
-    buffering_size      = 5
-    buffering_interval  = 300
+    buffer_size         = 5
+    buffer_interval     = 300
   }
 }

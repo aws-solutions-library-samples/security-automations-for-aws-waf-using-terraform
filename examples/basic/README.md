@@ -1,4 +1,3 @@
-<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -11,8 +10,8 @@
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.0.0, < 5.0.0 |
-| <a name="provider_random"></a> [random](#provider\_random) | n/a |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.67.0 |
+| <a name="provider_random"></a> [random](#provider\_random) | 3.7.2 |
 
 ## Modules
 
@@ -45,6 +44,17 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_access_logging_bucket_name"></a> [access\_logging\_bucket\_name](#input\_access\_logging\_bucket\_name) | access\_logging\_bucket\_name | `string` | `null` | no |
+| <a name="input_activate_aws_managed_rules_param"></a> [activate\_aws\_managed\_rules\_param](#input\_activate\_aws\_managed\_rules\_param) | activate\_aws\_managed\_rules\_param | `string` | `"no"` | no |
+| <a name="input_activate_bad_bot_protection_param"></a> [activate\_bad\_bot\_protection\_param](#input\_activate\_bad\_bot\_protection\_param) | activate\_bad\_bot\_protection\_param | `string` | `"yes"` | no |
+| <a name="input_activate_cross_site_scripting_protection_param"></a> [activate\_cross\_site\_scripting\_protection\_param](#input\_activate\_cross\_site\_scripting\_protection\_param) | activate\_cross\_site\_scripting\_protection\_param | `string` | `"yes"` | no |
+| <a name="input_activate_http_flood_protection_param"></a> [activate\_http\_flood\_protection\_param](#input\_activate\_http\_flood\_protection\_param) | activate\_http\_flood\_protection\_param | `string` | `"yes - AWS WAF rate based rule"` | no |
+| <a name="input_activate_reputation_lists_protection_param"></a> [activate\_reputation\_lists\_protection\_param](#input\_activate\_reputation\_lists\_protection\_param) | activate\_reputation\_lists\_protection\_param | `string` | `"yes"` | no |
+| <a name="input_activate_scanners_probes_protection_param"></a> [activate\_scanners\_probes\_protection\_param](#input\_activate\_scanners\_probes\_protection\_param) | activate\_scanners\_probes\_protection\_param | `string` | `"yes - Amazon Athena log parser"` | no |
+| <a name="input_activate_sql_injection_protection_param"></a> [activate\_sql\_injection\_protection\_param](#input\_activate\_sql\_injection\_protection\_param) | activate\_sql\_injection\_protection\_param | `string` | `"yes"` | no |
+| <a name="input_api_stage"></a> [api\_stage](#input\_api\_stage) | api stage | `string` | `"ProdStage"` | no |
+| <a name="input_app_access_log_bucket_logging_enabled"></a> [app\_access\_log\_bucket\_logging\_enabled](#input\_app\_access\_log\_bucket\_logging\_enabled) | app\_access\_log\_bucket\_logging\_enabled | `string` | `"no"` | no |
+| <a name="input_athena_query_run_time_schedule_param"></a> [athena\_query\_run\_time\_schedule\_param](#input\_athena\_query\_run\_time\_schedule\_param) | athena\_query\_run\_time\_schedule\_param | `number` | `4` | no |
 | <a name="input_aws_managed_ap_activated"></a> [aws\_managed\_ap\_activated](#input\_aws\_managed\_ap\_activated) | aws\_managed\_ap\_activated | `bool` | n/a | yes |
 | <a name="input_aws_managed_api_activated"></a> [aws\_managed\_api\_activated](#input\_aws\_managed\_api\_activated) | aws\_managed\_ap\_activated | `bool` | n/a | yes |
 | <a name="input_aws_managed_crs_activated"></a> [aws\_managed\_crs\_activated](#input\_aws\_managed\_crs\_activated) | aws\_managed\_crs\_activated | `bool` | n/a | yes |
@@ -56,21 +66,9 @@
 | <a name="input_aws_managed_sql_activated"></a> [aws\_managed\_sql\_activated](#input\_aws\_managed\_sql\_activated) | aws\_managed\_sql\_activated | `bool` | n/a | yes |
 | <a name="input_aws_managed_windows_activated"></a> [aws\_managed\_windows\_activated](#input\_aws\_managed\_windows\_activated) | aws\_managed\_windows\_activated | `bool` | n/a | yes |
 | <a name="input_aws_managed_wp_activated"></a> [aws\_managed\_wp\_activated](#input\_aws\_managed\_wp\_activated) | aws\_managed\_wp\_activated | `bool` | n/a | yes |
-| <a name="input_cross_site_scripting_protection_activated"></a> [cross\_site\_scripting\_protection\_activated](#input\_cross\_site\_scripting\_protection\_activated) | cross\_site\_scripting\_protection\_activated | `bool` | n/a | yes |
-| <a name="input_sql_injection_protection_activated"></a> [sql\_injection\_protection\_activated](#input\_sql\_injection\_protection\_activated) | sql\_injection\_protection\_activated | `bool` | n/a | yes |
-| <a name="input_access_logging_bucket_name"></a> [access\_logging\_bucket\_name](#input\_access\_logging\_bucket\_name) | access\_logging\_bucket\_name | `string` | `null` | no |
-| <a name="input_activate_aws_managed_rules_param"></a> [activate\_aws\_managed\_rules\_param](#input\_activate\_aws\_managed\_rules\_param) | activate\_aws\_managed\_rules\_param | `string` | `"no"` | no |
-| <a name="input_activate_bad_bot_protection_param"></a> [activate\_bad\_bot\_protection\_param](#input\_activate\_bad\_bot\_protection\_param) | activate\_bad\_bot\_protection\_param | `string` | `"yes"` | no |
-| <a name="input_activate_cross_site_scripting_protection_param"></a> [activate\_cross\_site\_scripting\_protection\_param](#input\_activate\_cross\_site\_scripting\_protection\_param) | activate\_cross\_site\_scripting\_protection\_param | `string` | `"yes"` | no |
-| <a name="input_activate_http_flood_protection_param"></a> [activate\_http\_flood\_protection\_param](#input\_activate\_http\_flood\_protection\_param) | activate\_http\_flood\_protection\_param | `string` | `"yes - AWS WAF rate based rule"` | no |
-| <a name="input_activate_reputation_lists_protection_param"></a> [activate\_reputation\_lists\_protection\_param](#input\_activate\_reputation\_lists\_protection\_param) | activate\_reputation\_lists\_protection\_param | `string` | `"yes"` | no |
-| <a name="input_activate_scanners_probes_protection_param"></a> [activate\_scanners\_probes\_protection\_param](#input\_activate\_scanners\_probes\_protection\_param) | activate\_scanners\_probes\_protection\_param | `string` | `""` | no |
-| <a name="input_activate_sql_injection_protection_param"></a> [activate\_sql\_injection\_protection\_param](#input\_activate\_sql\_injection\_protection\_param) | activate\_sql\_injection\_protection\_param | `string` | `"yes"` | no |
-| <a name="input_api_stage"></a> [api\_stage](#input\_api\_stage) | api stage | `string` | `"ProdStage"` | no |
-| <a name="input_app_access_log_bucket_logging_enabled"></a> [app\_access\_log\_bucket\_logging\_enabled](#input\_app\_access\_log\_bucket\_logging\_enabled) | app\_access\_log\_bucket\_logging\_enabled | `string` | `"no"` | no |
-| <a name="input_athena_query_run_time_schedule_param"></a> [athena\_query\_run\_time\_schedule\_param](#input\_athena\_query\_run\_time\_schedule\_param) | athena\_query\_run\_time\_schedule\_param | `number` | `4` | no |
 | <a name="input_bad_bot_protection_activated"></a> [bad\_bot\_protection\_activated](#input\_bad\_bot\_protection\_activated) | bad\_bot\_protection\_activated | `string` | `"yes"` | no |
 | <a name="input_create_access_logging_bucket"></a> [create\_access\_logging\_bucket](#input\_create\_access\_logging\_bucket) | create\_access\_logging\_bucket | `string` | `"no"` | no |
+| <a name="input_cross_site_scripting_protection_activated"></a> [cross\_site\_scripting\_protection\_activated](#input\_cross\_site\_scripting\_protection\_activated) | cross\_site\_scripting\_protection\_activated | `bool` | n/a | yes |
 | <a name="input_end_point"></a> [end\_point](#input\_end\_point) | cloudfront or ALB | `string` | `"cloudfront"` | no |
 | <a name="input_error_threshold"></a> [error\_threshold](#input\_error\_threshold) | error threshold for Log Monitoring Settings | `number` | `50` | no |
 | <a name="input_http_flood_athena_query_group_by_param"></a> [http\_flood\_athena\_query\_group\_by\_param](#input\_http\_flood\_athena\_query\_group\_by\_param) | http\_flood\_athena\_query\_group\_by\_param | `string` | `"None"` | no |
@@ -88,12 +86,12 @@
 | <a name="input_send_anonymous_usage_data"></a> [send\_anonymous\_usage\_data](#input\_send\_anonymous\_usage\_data) | Data collection parameter | `string` | `"yes"` | no |
 | <a name="input_sns_email_param"></a> [sns\_email\_param](#input\_sns\_email\_param) | SNS notification value | `string` | `""` | no |
 | <a name="input_source_version"></a> [source\_version](#input\_source\_version) | version | `string` | `"v4.0.2"` | no |
+| <a name="input_sql_injection_protection_activated"></a> [sql\_injection\_protection\_activated](#input\_sql\_injection\_protection\_activated) | sql\_injection\_protection\_activated | `bool` | n/a | yes |
 | <a name="input_sse_algorithm"></a> [sse\_algorithm](#input\_sse\_algorithm) | sse\_algorithm | `string` | `"aws:kms"` | no |
-| <a name="input_user_agent_extra"></a> [user\_agent\_extra](#input\_user\_agent\_extra) | UserAgent | `string` | `"AwsSolution/-tf"` | no |
+| <a name="input_user_agent_extra"></a> [user\_agent\_extra](#input\_user\_agent\_extra) | UserAgent | `string` | `"AwsSolution/SO0006-tf"` | no |
 | <a name="input_user_defined_app_access_log_bucket_prefix"></a> [user\_defined\_app\_access\_log\_bucket\_prefix](#input\_user\_defined\_app\_access\_log\_bucket\_prefix) | user\_defined\_app\_access\_log\_bucket\_prefix | `string` | `"AWSLogs"` | no |
 | <a name="input_waf_block_period"></a> [waf\_block\_period](#input\_waf\_block\_period) | block period for Log Monitoring Settings | `number` | `240` | no |
 
 ## Outputs
 
 No outputs.
-<!-- END_TF_DOCS -->
