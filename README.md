@@ -1,3 +1,7 @@
+> **⚠️ Deprecation Notice**: Security Automations for AWS WAF - Terraform has been deprecated and will not receive any additional features or updates. We encourage customers to explore using native [AWS WAF](https://docs.aws.amazon.com/waf/) capabilities including AWS Managed Rules, native rate-based rules, and the AWS WAF Console for intuitive configuration and management. These native capabilities provide superior functionality, better performance, real-time updates, and enhanced security features compared to the solution.
+
+> Customers running solution versions prior to v3.0.0 (which deployed AWS WAF Classic) should first migrate to AWS WAF v2 using the [AWS WAF migration documentation](https://docs.aws.amazon.com/waf/latest/developerguide/waf-migrating-from-classic.html). Customers on v3.0.0 or later are already on AWS WAF v2 and can directly adopt native managed rules and console-based management. 
+
 # 🛡️ Security Automations for AWS WAF - Terraform
 
 [![License: MIT-0](https://img.shields.io/badge/License-MIT--0-yellow.svg)](https://github.com/aws/mit-0)
