@@ -4,7 +4,7 @@ resource "aws_wafv2_web_acl" "WafAcl" {
   count       = var.create_waf_rule ? 1 : 0
   name        = var.WafAcl_name
   description = "Custom WAFWebACL"
-  scope       = "CLOUDFRONT"
+  scope       = var.SCOPE
   default_action {
     allow {}
   }
